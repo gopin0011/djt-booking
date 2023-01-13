@@ -12,9 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
     <div id="app">

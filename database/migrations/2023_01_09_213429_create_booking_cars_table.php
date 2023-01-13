@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('timedepature')->nullable();
             $table->string('datedepature')->nullable();
             $table->string('user')->nullable();
+            $table->integer('qty')->nullable();
             $table->string('rating')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();

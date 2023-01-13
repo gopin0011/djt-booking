@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Booking System',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,9 +63,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Booking</b> System',
+    'logo_img' => 'logo.png',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -192,9 +192,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-secondary elevation-1',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -215,7 +215,7 @@ return [
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
@@ -291,97 +291,107 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
+        // [
+        //     'type'         => 'fullscreen-widget',
+        //     'topnav_right' => true,
+        // ],
 
         // Sidebar items:
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        ['header' => 'system_settings', 'can'  => ['dev', 'ga','gastaff']],
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'users',
+            'url'  => 'users',
+            'icon' => 'fas fa-fw fa-users-gear',
+            'can'  => ['dev', 'ga','gastaff'],
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'rooms',
+            'url'  => 'rooms',
+            'icon' => 'fas fa-fw fa-chalkboard',
+            'can'  => ['dev', 'ga','gastaff'],
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'cars',
+            'url'  => 'cars',
+            'icon' => 'fas fa-fw fa-car',
+            'can'  => ['dev', 'ga','gastaff'],
         ],
+
+        ['header' => 'booking', 'can'  => ['dev', 'ga','gastaff', 'fo', 'dept']],
+        [
+            'text' => 'bookingrooms',
+            'url'  => 'booking-room',
+            'icon' => 'fas fa-fw fa-bookmark',
+            'can'  => ['dev', 'ga','gastaff'],
+        ],
+        [
+            'text' => 'bookingcars',
+            'url'  => 'booking-car',
+            'icon' => 'fas fa-fw fa-bookmark',
+            'can'  => ['dev', 'ga','gastaff'],
+        ],
+
+        ['header' => 'approval', 'can'  => ['dev', 'ga','gastaff']],
+        [
+            'text' => 'approoms',
+            'url'  => 'bookingrooms/approval',
+            'icon' => 'fas fa-fw fa-check',
+            'can'  => ['dev', 'ga','gastaff'],
+        ],
+        [
+            'text' => 'appcars',
+            'url'  => 'bookingcars/approval',
+            'icon' => 'fas fa-fw fa-check',
+            'can'  => ['dev', 'ga','gastaff'],
+        ],
+
+        ['header' => 'monitoring', 'can'  => ['dev','fo']],
+        [
+            'text' => 'rooms',
+            'url'  => 'bookingrooms/monitoring',
+            'icon' => 'fas fa-fw fa-chalkboard',
+            'can'  => ['dev','fo'],
+        ],
+        [
+            'text' => 'cars',
+            'url'  => 'bookingcars/monitoring',
+            'icon' => 'fas fa-fw fa-car',
+            'can'  => ['dev','fo'],
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'users/change-data',
             'icon' => 'fas fa-fw fa-user',
+            'can'  => ['dev', 'ga', 'it']
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => 'users/change-password',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'can'  => ['dev', 'ga', 'it']
         ],
     ],
 

@@ -7,7 +7,7 @@ return [
     'pages'                         => 'Halaman',
     'account_settings'              => 'PENGATURAN AKUN',
     'profile'                       => 'Profil',
-    'change_password'               => 'Ubah Kata Sandi',
+    'change_password'               => 'Ganti Password',
     'multilevel'                    => 'Multi Level',
     'level_one'                     => 'Level 1',
     'level_two'                     => 'Level 2',

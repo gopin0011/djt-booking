@@ -3,83 +3,89 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookingRoom;
+use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
 class BookingRoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $rooms = Room::where('status', '0')->get();
+        return view('pages.booking.room', compact('rooms'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function showData(Request $request)
     {
-        //
+        $data = BookingRoom::where('pic', Auth::user()->id)->get();
+        if ($request->ajax()) {
+            $allData = DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('time', function ($row) {
+                    $time = $row->starttime . '-' . $row->endtime;
+                    return $time;
+                })
+                ->addColumn('room', function ($row) {
+                    $room = Room::find($row->room);
+                    return $room->name;
+                })
+                ->addColumn('pic', function ($row) {
+                    $pic = User::find($row->pic);
+                    return $pic->name;
+                })
+                ->addColumn('status', function ($row) {
+                    if ($row->status == 0) {
+                        $status = "Belum Diproses";
+                    } else if ($row->status == 0) {
+                        $status = "Diterima";
+                    } else {
+                        $status = "Ditolak";
+                    }
+                    return $status;
+                })
+                ->addColumn('action', function ($row) {
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editData"><i class="fa fa-edit"></i></a>';
+                    $btn .= '&nbsp;&nbsp;';
+                    $btn .= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['time', 'pic', 'status', 'action'])
+                ->make(true);
+            return $allData;
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function edit($id)
+    {
+        $data = BookingRoom::find($id);
+        return response()->json($data);
+    }
+
     public function store(Request $request)
     {
-        //
+        BookingRoom::updateOrCreate(
+            ['id' => $request->data_id],
+            [
+                'booking_id' => 'BR-' . date(now()->format('YmdHis')),
+                'room' => $request->room,
+                'purpose' => $request->purpose,
+                'starttime' => $request->starttime,
+                'endtime' => $request->endtime,
+                'date' => $request->date,
+                'pic' => Auth::user()->id,
+                'qty' => $request->qty,
+                'note' => $request->note,
+                'status' => '0'
+            ]
+        );
+        return response()->json(['success' => 'Data telah berhasil disimpan']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BookingRoom  $bookingRoom
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BookingRoom $bookingRoom)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BookingRoom  $bookingRoom
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BookingRoom $bookingRoom)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BookingRoom  $bookingRoom
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BookingRoom $bookingRoom)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\BookingRoom  $bookingRoom
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BookingRoom $bookingRoom)
-    {
-        //
+        BookingRoom::find($id)->delete();
+        return response()->json(['success' => 'Data telah berhasil dihapus']);
     }
 }

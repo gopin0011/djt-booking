@@ -2,84 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookingCar;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index(){
+        return view('pages.car.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function showData(Request $request){
+        $data = Car::where('id','<>',1)->get();
+        if($request->ajax()){
+            $allData = DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function($row){
+                $trans = BookingCar::where('car',$row->id)->get();
+                $count = count($trans);
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' .$row->id. '" data-original-title="Edit" class="edit btn btn-primary btn-sm editData"><i class="fa fa-edit"></i></a>';
+                $btn .= '&nbsp;&nbsp;';
+                if($count==0)
+                {
+                    $btn.= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' .$row->id. '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
+                }
+                return $btn;
+            })
+            ->addColumn('status',function($row){
+                if($row->status ==0)
+                {
+                    $status = "Tersedia";
+                }else{
+                    $status = "Tidak tersedia";
+                }
+                return $status;
+            })
+            ->rawColumns(['action','status'])
+            ->make(true);
+            return $allData;
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function edit($id)
     {
-        //
+        $data = Car::find($id);
+        return response()->json($data);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Car  $car
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Car $car)
-    {
-        //
+    public function store(Request $request){
+
+        Car::updateOrCreate(
+            ['id'=>$request->data_id],
+            ['number'=>$request->number,
+            'type'=>$request->type,
+            'note'=>$request->note,
+            'status'=>$request->status
+            ]
+        );
+        return response()->json(['success'=>'Data telah berhasil disimpan']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Car  $car
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Car $car)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Car  $car
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Car $car)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Car  $car
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Car $car)
-    {
-        //
+    public function destroy($id){
+        Car::find($id)->delete();
+        return response()->json(['success'=>'Data telah berhasil dihapus']);
     }
 }

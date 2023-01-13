@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('booking_id');
             $table->string('room')->nullable();
             $table->string('purpose')->nullable();
-            $table->string('time')->nullable();
+            $table->string('starttime')->nullable();
+            $table->string('endtime')->nullable();
             $table->string('date')->nullable();
             $table->string('pic')->nullable();
+            $table->integer('qty')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
