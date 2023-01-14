@@ -333,7 +333,7 @@ return [
         ],
         [
             'text' => 'cars',
-            'url'  => 'cars',
+            'url'  => 'vehicles',
             'icon' => 'fas fa-fw fa-car',
             'can'  => ['dev', 'ga','gastaff'],
         ],
@@ -347,7 +347,7 @@ return [
         ],
         [
             'text' => 'bookingcars',
-            'url'  => 'booking-car',
+            'url'  => 'booking-vehicle',
             'icon' => 'fas fa-fw fa-bookmark',
             'can'  => ['dev', 'ga','gastaff'],
         ],
@@ -369,13 +369,13 @@ return [
         ['header' => 'monitoring', 'can'  => ['dev','fo']],
         [
             'text' => 'rooms',
-            'url'  => 'bookingrooms/monitoring',
+            'url'  => 'booking-room/today',
             'icon' => 'fas fa-fw fa-chalkboard',
             'can'  => ['dev','fo'],
         ],
         [
             'text' => 'cars',
-            'url'  => 'bookingcars/monitoring',
+            'url'  => 'booking-vehicle/today',
             'icon' => 'fas fa-fw fa-car',
             'can'  => ['dev','fo'],
         ],

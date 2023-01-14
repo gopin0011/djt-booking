@@ -39,8 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('users/change-data', [UserController::class, 'storedata'])->name('data.store');
 
     //MOBIL
-    Route::get('cars/data', [CarController::class, 'showData'])->name('cars.data');
-    Route::resource('cars', CarController::class);
+    Route::get('vehicles/data', [CarController::class, 'showData'])->name('vehicles.data');
+    Route::resource('vehicles', CarController::class);
 
     //RUANGAN
     Route::get('rooms/data', [RoomController::class, 'showData'])->name('rooms.data');
@@ -53,17 +53,22 @@ Route::group(['middleware' => ['auth']], function () {
     //BOOKING
     //BOOKING RUANGAN
     Route::get('booking-room', [BookingRoomController::class, 'index'])->name('bookingroom.index');
+    Route::get('booking-room/today', [BookingRoomController::class, 'today'])->name('bookingroom.today');
+    Route::get('booking-room', [BookingRoomController::class, 'index'])->name('bookingroom.index');
     Route::delete('booking-room/data/{id}', [BookingRoomController::class, 'destroy'])->name('bookingroom.destroy');
     Route::get('booking-room/data', [BookingRoomController::class, 'showData'])->name('bookingroom.data');
+    Route::get('booking-room/today/data', [BookingRoomController::class, 'showDataToday'])->name('bookingroom.datatoday');
     Route::post('booking-room/data', [BookingRoomController::class, 'store'])->name('bookingroom.store');
     Route::get('booking-room/{id}/edit', [BookingRoomController::class, 'edit'])->name('bookingroom.edit');
 
     //BOOKING KENDARAAN
-    Route::get('booking-car', [BookingCarController::class, 'index'])->name('bookingcar.index');
-    Route::delete('booking-car/data/{id}', [BookingCarController::class, 'destroy'])->name('bookingcar.destroy');
-    Route::get('booking-car/data', [BookingCarController::class, 'showData'])->name('bookingcar.data');
-    Route::post('booking-car/data', [BookingCarController::class, 'store'])->name('bookingcar.store');
-    Route::get('booking-car/{id}/edit', [BookingCarController::class, 'edit'])->name('bookingcar.edit');
+    Route::get('booking-vehicle', [BookingCarController::class, 'index'])->name('bookingcar.index');
+    Route::get('booking-vehicle/today', [BookingCarController::class, 'today'])->name('bookingcar.today');
+    Route::delete('booking-vehicle/data/{id}', [BookingCarController::class, 'destroy'])->name('bookingcar.destroy');
+    Route::get('booking-vehicle/data', [BookingCarController::class, 'showData'])->name('bookingcar.data');
+    Route::get('booking-vehicle/today/data', [BookingCarController::class, 'showDataToday'])->name('bookingcar.datatoday');
+    Route::post('booking-vehicle/data', [BookingCarController::class, 'store'])->name('bookingcar.store');
+    Route::get('booking-vehicle/{id}/edit', [BookingCarController::class, 'edit'])->name('bookingcar.edit');
 
     //APPROVE
 

@@ -44,8 +44,8 @@
                             Status: <br>
                             <select type="text" class="form-control" id="status" name="status" placeholder=""
                                 value="">
-                                <option value=0>Tersedia</option>
-                                <option value=1>Tidak tersedia</option>
+                                <option value=0>Aktif</option>
+                                <option value=1>Nonaktif</option>
                             </select>
                             <br>
                         </div>
@@ -124,7 +124,7 @@
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{!! route('cars.data') !!}',
+                ajax: '{!! route('vehicles.data') !!}',
                 columnDefs: [{
                     searchable: false,
                     orderable: false,
@@ -173,7 +173,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('cars.store') }}",
+                    url: "{{ route('vehicles.store') }}",
                     data: $("#dataForm").serialize(),
                     dataType: 'json',
                     success: function(data) {
@@ -193,7 +193,7 @@
                 if (confirm("Apakah Anda yakin?")) {
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('cars.store') }}" + "/" + data_id,
+                        url: "{{ route('vehicles.store') }}" + "/" + data_id,
                         success: function(data) {
                             table.draw();
                         },
@@ -208,7 +208,7 @@
 
             $('body').on('click', '.editData', function() {
                 var data_id = $(this).data("id");
-                $.get("{{ route('cars.index') }}" + "/" + data_id + "/edit", function(data) {
+                $.get("{{ route('vehicles.index') }}" + "/" + data_id + "/edit", function(data) {
                     $("#modalHeading").html("Ubah Data");
                     $("#ajaxModal").modal('show');
                     $("#data_id").val(data.id);

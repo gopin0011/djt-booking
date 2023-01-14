@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookingRoom;
 use App\Models\Room;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
@@ -52,6 +53,46 @@ class BookingRoomController extends Controller
                     return $btn;
                 })
                 ->rawColumns(['time', 'pic', 'status', 'action'])
+                ->make(true);
+            return $allData;
+        }
+    }
+
+    public function today()
+    {
+        $date = Carbon::now()->format('l, j F Y');
+        return view('pages.booking.room-today', compact('date'));
+    }
+
+    public function showDataToday(Request $request)
+    {
+        $data = BookingRoom::where('date', date(now()->format('Y-m-d')))->get();
+        if ($request->ajax()) {
+            $allData = DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('time', function ($row) {
+                    $time = $row->starttime . '-' . $row->endtime;
+                    return $time;
+                })
+                ->addColumn('room', function ($row) {
+                    $room = Room::find($row->room);
+                    return $room->name;
+                })
+                ->addColumn('pic', function ($row) {
+                    $pic = User::find($row->pic);
+                    return $pic->name;
+                })
+                ->addColumn('status', function ($row) {
+                    if ($row->status == 0) {
+                        $status = "Belum Diproses";
+                    } else if ($row->status == 0) {
+                        $status = "Diterima";
+                    } else {
+                        $status = "Ditolak";
+                    }
+                    return $status;
+                })
+                ->rawColumns(['time', 'pic', 'status'])
                 ->make(true);
             return $allData;
         }

@@ -32,9 +32,9 @@ class CarController extends Controller
             ->addColumn('status',function($row){
                 if($row->status ==0)
                 {
-                    $status = "Tersedia";
+                    $status = "Aktif";
                 }else{
-                    $status = "Tidak tersedia";
+                    $status = "Nonaktif";
                 }
                 return $status;
             })

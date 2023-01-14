@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookingCar;
 use App\Models\Car;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
@@ -57,6 +58,51 @@ class BookingCarController extends Controller
                     return $btn;
                 })
                 ->rawColumns(['car','driver','user','status', 'action'])
+                ->make(true);
+            return $allData;
+        }
+    }
+
+    public function today()
+    {
+        $date = Carbon::now()->format('l, j F Y');
+        return view('pages.booking.car-today',compact('date'));
+    }
+
+    public function showDataToday(Request $request)
+    {
+        $data = BookingCar::where('datedepature', date(now()->format('Y-m-d')))->get();
+        if ($request->ajax()) {
+            $allData = DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('car', function ($row) {
+                    $data = Car::find($row->car);
+                    return $data->number;
+                })
+                ->addColumn('driver', function ($row) {
+                    $data = User::find($row->driver);
+                    if($row->driver == ''){
+                        $driver = 'Belum ada driver';
+                    }else{
+                        $driver = $data->name;
+                    }
+                    return $driver;
+                })
+                ->addColumn('user', function ($row) {
+                    $data = User::find($row->user);
+                    return $data->name;
+                })
+                ->addColumn('status', function ($row) {
+                    if ($row->status == 0) {
+                        $status = "Belum Diproses";
+                    } else if ($row->status == 0) {
+                        $status = "Diterima";
+                    } else {
+                        $status = "Ditolak";
+                    }
+                    return $status;
+                })
+                ->rawColumns(['car','driver','user','status'])
                 ->make(true);
             return $allData;
         }

@@ -44,10 +44,11 @@ class UserController extends Controller
                     return $role;
                 })
                 ->addColumn('status', function ($row) {
-                    if ($row->status == 0) {
-                        $status = "Tersedia";
-                    } else {
-                        $status = "Tidak Tersedia";
+                    if ($row->status == 0)
+                    {
+                        $status = "Aktif";
+                    }else{
+                        $status = "Nonaktif";
                     }
                     return $status;
                 })

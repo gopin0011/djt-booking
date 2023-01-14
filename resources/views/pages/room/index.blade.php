@@ -36,8 +36,8 @@
                             Status: <br>
                             <select type="text" class="form-control" id="status" name="status" placeholder=""
                                 value="">
-                                <option value=0>Tersedia</option>
-                                <option value=1>Tidak tersedia</option>
+                                <option value=0>Aktif</option>
+                                <option value=1>Nonaktif</option>
                             </select>
                             <br>
                         </div>
