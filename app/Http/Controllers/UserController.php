@@ -19,9 +19,14 @@ class UserController extends Controller
         return view('pages.user.index');
     }
 
+    public function driver()
+    {
+        return view('pages.user.driver');
+    }
+
     public function showData(Request $request)
     {
-        $data = User::where('id', '<>', 1)->get();
+        $data = User::where([['id', '<>', 1],['role','<>','5']])->get();
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
@@ -63,6 +68,37 @@ class UserController extends Controller
                     return $btn;
                 })
                 ->rawColumns(['role', 'status', 'action'])
+                ->make(true);
+            return $allData;
+        }
+    }
+
+    public function showDataDriver(Request $request)
+    {
+        $data = User::where('role', '5')->get();
+        if ($request->ajax()) {
+            $allData = DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    if ($row->status == 0)
+                    {
+                        $status = "Aktif";
+                    }else{
+                        $status = "Nonaktif";
+                    }
+                    return $status;
+                })
+                ->addColumn('action', function ($row) {
+                    $trans = BookingCar::where('driver', $row->id)->orWhere('user', $row->id)->get();
+                    $count = count($trans);
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editData"><i class="fa fa-edit"></i></a>';
+                    $btn .= '&nbsp;&nbsp;';
+                    if ($count == 0) {
+                        $btn .= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
+                    }
+                    return $btn;
+                })
+                ->rawColumns(['status', 'action'])
                 ->make(true);
             return $allData;
         }

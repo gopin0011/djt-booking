@@ -26,6 +26,9 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <input type="hidden" name="data_id" id="data_id">
+                                    <input type="hidden" name="status" id="status">
+                                    <input type="hidden" name="car" id="car">
+                                    <input type="hidden" name="driver" id="driver">
                                     <div class="input-group mb-3">
                                         {{-- <div class="col-sm-8">
                                             <label for="name">Pilih Kendaraan</label><br>
@@ -75,8 +78,6 @@
                                             <textarea rows="3" class="form-control" name="note" id="note"></textarea>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                             <div class="row">
@@ -102,7 +103,7 @@
         <thead>
             <tr>
                 {{-- <th width="50px">#</th> --}}
-                <th>ID Booking</th>
+                <th width="60px">Status</th>
                 <th>Kendaraan</th>
                 <th>Driver</th>
                 <th>Kegiatan</th>
@@ -111,9 +112,9 @@
                 <th>Waktu</th>
                 <th>PIC</th>
                 <th>Jumlah</th>
+                {{-- <th>Status</th> --}}
                 <th>Catatan</th>
-                <th>Status</th>
-                <th width="60px"></th>
+                <th>ID Booking</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -170,7 +171,7 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [0, 'asc']
+                    [10, 'asc']
                 ],
                 columns: [
                     // {
@@ -178,8 +179,8 @@
                     //     name: 'DT_RowIndex'
                     // },
                     {
-                        data: 'booking_id',
-                        name: 'booking_id'
+                        data: 'action',
+                        name: 'action'
                     },
                     {
                         data: 'car',
@@ -213,17 +214,17 @@
                         data: 'qty',
                         name: 'qty'
                     },
+                    // {
+                    //     data: 'status',
+                    //     name: 'status'
+                    // },
                     {
                         data: 'note',
                         name: 'note'
                     },
                     {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action'
+                        data: 'booking_id',
+                        name: 'booking_id'
                     },
                 ]
             });
@@ -286,6 +287,9 @@
                     $("#datedepature").val(data.datedepature);
                     $("#timedepature").val(data.timedepature);
                     $("#note").val(data.note);
+                    $("#status").val(data.status);
+                    $("#car").val(data.car);
+                    $("#driver").val(data.driver);
                 });
             });
         });

@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col float-left">
-            <h5><i class="fa fa-users"></i> <strong>Daftar Pengguna</strong></h5>
+            <h5><i class="fa fa-user-gear"></i> <strong>Daftar Driver</strong></h5>
         </div>
         <div class="col">
             <a type="button" href="javascript:void(0)" id="createNewData" class="btn btn-primary float-right">+ Tambah</a>
@@ -47,19 +47,7 @@
                         <input type="text" class="form-control" id="address" name="address"
                         placeholder="Masukkan alamat pengguna" required>
                     </div>
-                    <div class="form-group">
-                        Hak Akses: <br>
-                        <select type="text" class="form-control" id="role" name="role"
-                        placeholder="" value="">
-                        {{-- <option value=0>IT</option> --}}
-                        <option value=1>GA Manager</option>
-                        <option value=2>GA Staff</option>
-                        <option value=3>Front Office</option>
-                        <option value=4>Department</option>
-                        {{-- <option value=5>Driver</option> --}}
-                        <option value=6>Guest</option>
-                        </select>
-                    </div>
+                    <input type="hidden" name="role" id="role" value="5">
                     <div class="form-group">
                         Status: <br>
                         <select type="text" class="form-control" id="status" name="status"
@@ -87,7 +75,6 @@
             <th>NIK</th>
             <th>Telepon</th>
             <th>Alamat</th>
-            <th>Hak Akses</th>
             <th>Status</th>
             <th width="60px"></th>
         </tr>
@@ -141,7 +128,7 @@
             responsive: true,
             serverSide:true,
             processing:true,
-            ajax: '{!! route('users.data') !!}',
+            ajax: '{!! route('users.datadriver') !!}',
             columnDefs: [
                 {
                     searchable: false,
@@ -157,7 +144,6 @@
                     {data:'nik',name:'nik'},
                     {data:'phone',name:'phone'},
                     {data:'address',name:'address'},
-                    {data:'role',name:'role'},
                     {data:'status',name:'status'},
                     {data:'action',name:'action'},
                 ]

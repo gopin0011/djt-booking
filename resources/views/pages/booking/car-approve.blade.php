@@ -6,10 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-bookmark"></i> <strong>Booking Ruang Meeting</strong></h5>
-            </div>
-            <div class="col">
-                <a type="button" href="javascript:void(0)" id="createNewData" class="btn btn-primary float-right">+ Tambah</a>
+                <h5><i class="fa fa-check"></i> <strong>Approval Kendaraan</strong></h5>
             </div>
         </div>
     </div>
@@ -26,46 +23,57 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <input type="hidden" name="data_id" id="data_id">
-                                    <input type="hidden" name="status" id="status">
                                     <div class="input-group mb-3">
-                                        <div class="col-sm-12">
-                                            <label for="name">Pilih Ruangan</label><br>
-                                            <select type="text" class="form-control" id="room" name="room"
+                                        <div class="col-sm-6">
+                                            <label for="name">Pilih Kendaraan</label><br>
+                                            <select type="text" class="form-control" id="car" name="car"
                                                 value="">
-                                                @foreach ($rooms as $data)
+                                                @foreach ($cars as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->number }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="name">Pilih Driver</label><br>
+                                            <select type="text" class="form-control" id="driver" name="driver"
+                                                value="">
+                                                <option value="">Belum ada driver</option>
+                                                @foreach ($drivers as $data)
                                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {{-- <div class="col-sm-4">
-                                            <label for="type">Jumlah Peserta</label><br>
+                                        <div class="col-sm-8">
+                                            <label for="type">Kegiatan</label><br>
+                                            <input type="text" class="form-control" placeholder="Kegiatan" name="purpose"
+                                                id="purpose">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="type">Jumlah</label><br>
                                             <input type="number" class="form-control" value="1" name="qty"
                                                 id="qty">
-                                        </div> --}}
-                                    </div>
-
-                                    <div class="input-group mb-3">
-
-                                        <div class="col-sm-4">
-                                            <label for="type">Tanggal Meeting</label><br>
-                                            <input type="date" class="form-control" name="date" id="date">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label for="type">Waktu Mulai</label><br>
-                                            <input type="time" class="form-control" name="starttime" id="starttime">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label for="type">Waktu Selesai</label><br>
-                                            <input type="time" class="form-control" name="endtime" id="endtime">
                                         </div>
                                     </div>
 
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
-                                            <label for="number">Tujuan Meeting</label><br>
-                                            <textarea rows="2" class="form-control" name="purpose" id="purpose"></textarea>
+                                            <label for="type">Tempat Tujuan</label><br>
+                                            <input type="text" class="form-control" placeholder="Tempat tujuan"
+                                                name="destination" id="destination">
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="col-sm-6">
+                                            <label for="type">Tanggal Keberangkatan</label><br>
+                                            <input type="date" class="form-control" name="datedepature"
+                                                id="datedepature">
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="type">Waktu Keberangkatan</label><br>
+                                            <input type="time" class="form-control" name="timedepature"
+                                                id="timedepature">
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
@@ -74,13 +82,24 @@
                                             <textarea rows="3" class="form-control" name="note" id="note"></textarea>
                                         </div>
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <div class="col-sm-12">
+                                            <label for="name">Status Approve</label><br>
+                                            <select type="text" class="form-control" id="status" name="status">
+                                                <option value="0">Belum disetujui</option>
+                                                <option value="1">Disetujui</option>
+                                                <option value="2">Ditolak</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <button type="submit" class="btn btn-primary btn-block" id="btnSave" value="create">Booking Ruangan</button>
+                                            <button type="submit" class="btn btn-primary btn-block" id="btnSave"
+                                                value="create">Booking Kendaraan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -94,24 +113,26 @@
 @stop
 
 @section('content')
-<table class="table table-striped data-table display nowrap" width="100%">
-    <thead>
-        <tr>
-            {{-- <th width="50px">#</th> --}}
-            <th width="60px">Status</th>
-            <th>Ruangan</th>
-            <th>Tujuan</th>
-            <th>Tanggal</th>
-            <th>Waktu</th>
-            <th>PIC</th>
-            <th>Jumlah</th>
-            <th>Catatan</th>
-            <th>ID Booking</th>
-            {{-- <th>Status</th> --}}
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <table class="table table-striped data-table display nowrap" width="100%">
+        <thead>
+            <tr>
+                {{-- <th width="50px">#</th> --}}
+                <th width="60px"></th>
+                <th>Kendaraan</th>
+                <th>Driver</th>
+                <th>Kegiatan</th>
+                <th>Tujuan</th>
+                <th>Tanggal</th>
+                <th>Waktu</th>
+                <th>PIC</th>
+                <th>Jumlah</th>
+                {{-- <th>Status</th> --}}
+                <th>Catatan</th>
+                <th>ID Booking</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 @stop
 
 @section('css')
@@ -157,14 +178,14 @@
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{!! route('bookingroom.data') !!}',
+                ajax: '{!! route('bookingcar.approvedata') !!}',
                 columnDefs: [{
                     searchable: false,
                     orderable: false,
                     targets: 0,
                 }, ],
                 order: [
-                    [8, 'asc']
+                    [10, 'asc']
                 ],
                 columns: [
                     // {
@@ -176,42 +197,49 @@
                         name: 'action'
                     },
                     {
-                        data: 'room',
-                        name: 'room'
+                        data: 'car',
+                        name: 'car'
+                    },
+                    {
+                        data: 'driver',
+                        name: 'driver'
                     },
                     {
                         data: 'purpose',
                         name: 'purpose'
                     },
                     {
-                        data: 'date',
-                        name: 'date'
+                        data: 'destination',
+                        name: 'destination'
                     },
                     {
-                        data: 'time',
-                        name: 'time'
+                        data: 'datedepature',
+                        name: 'datedepature'
                     },
                     {
-                        data: 'pic',
-                        name: 'pic'
+                        data: 'timedepature',
+                        name: 'timedepature'
+                    },
+                    {
+                        data: 'user',
+                        name: 'user'
                     },
                     {
                         data: 'qty',
                         name: 'qty'
-                    },
-                    {
-                        data: 'note',
-                        name: 'note'
                     },
                     // {
                     //     data: 'status',
                     //     name: 'status'
                     // },
                     {
+                        data: 'note',
+                        name: 'note'
+                    },
+                    {
                         data: 'booking_id',
                         name: 'booking_id'
                     },
-
                 ]
             });
 
@@ -224,11 +252,11 @@
 
             $("#btnSave").click(function(e) {
                 e.preventDefault();
-                $(this).html('Booking Ruangan');
+                $(this).html('Booking Kendaraan');
 
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('bookingroom.store') }}",
+                    url: "{{ route('bookingcar.store') }}",
                     data: $("#dataForm").serialize(),
                     dataType: 'json',
                     success: function(data) {
@@ -238,7 +266,7 @@
                     },
                     error: function(data) {
                         console.log('Error', data);
-                        $("#btnSave").html('Booking Ruangan');
+                        $("#btnSave").html('Booking Kendaraan');
                     }
                 });
             });
@@ -248,7 +276,7 @@
                 if (confirm("Apakah Anda yakin?")) {
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('bookingroom.store') }}" + "/" + data_id,
+                        url: "{{ route('bookingcar.store') }}" + "/" + data_id,
                         success: function(data) {
                             table.draw();
                         },
@@ -263,18 +291,18 @@
 
             $('body').on('click', '.editData', function() {
                 var data_id = $(this).data("id");
-                $.get("{{ route('bookingroom.index') }}" + "/" + data_id + "/edit", function(data) {
+                $.get("{{ route('bookingcar.index') }}" + "/" + data_id + "/edit", function(data) {
                     $("#modalHeading").html("Form Booking");
                     $("#ajaxModal").modal('show');
                     $("#data_id").val(data.id);
-                    $("#room").val(data.room);
                     $("#purpose").val(data.purpose);
-                    $("#starttime").val(data.starttime);
-                    $("#endtime").val(data.endtime);
-                    $("#date").val(data.date);
-                    $("#pic").val(data.pic);
                     $("#qty").val(data.qty);
+                    $("#destination").val(data.destination);
+                    $("#datedepature").val(data.datedepature);
+                    $("#timedepature").val(data.timedepature);
                     $("#note").val(data.note);
+                    $("#driver").val(data.driver);
+                    $("#car").val(data.car);
                     $("#status").val(data.status);
                 });
             });

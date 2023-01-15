@@ -6,10 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-bookmark"></i> <strong>Booking Ruang Meeting</strong></h5>
-            </div>
-            <div class="col">
-                <a type="button" href="javascript:void(0)" id="createNewData" class="btn btn-primary float-right">+ Tambah</a>
+                <h5><i class="fa fa-check"></i> <strong>Approval Ruang Meeting</strong></h5>
             </div>
         </div>
     </div>
@@ -26,7 +23,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <input type="hidden" name="data_id" id="data_id">
-                                    <input type="hidden" name="status" id="status">
+                                    <input type="hidden" name="booking_id" id="booking_id">
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="name">Pilih Ruangan</label><br>
@@ -37,15 +34,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {{-- <div class="col-sm-4">
-                                            <label for="type">Jumlah Peserta</label><br>
-                                            <input type="number" class="form-control" value="1" name="qty"
-                                                id="qty">
-                                        </div> --}}
                                     </div>
-
                                     <div class="input-group mb-3">
-
                                         <div class="col-sm-4">
                                             <label for="type">Tanggal Meeting</label><br>
                                             <input type="date" class="form-control" name="date" id="date">
@@ -61,7 +51,6 @@
                                             <input type="time" class="form-control" name="endtime" id="endtime">
                                         </div>
                                     </div>
-
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="number">Tujuan Meeting</label><br>
@@ -74,13 +63,24 @@
                                             <textarea rows="3" class="form-control" name="note" id="note"></textarea>
                                         </div>
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <div class="col-sm-12">
+                                            <label for="name">Status Approve</label><br>
+                                            <select type="text" class="form-control" id="status" name="status">
+                                                <option value="0">Belum disetujui</option>
+                                                <option value="1">Disetujui</option>
+                                                <option value="2">Ditolak</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <button type="submit" class="btn btn-primary btn-block" id="btnSave" value="create">Booking Ruangan</button>
+                                            <button type="submit" class="btn btn-primary btn-block" id="btnSave"
+                                                value="create">Booking Ruangan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -94,24 +94,24 @@
 @stop
 
 @section('content')
-<table class="table table-striped data-table display nowrap" width="100%">
-    <thead>
-        <tr>
-            {{-- <th width="50px">#</th> --}}
-            <th width="60px">Status</th>
-            <th>Ruangan</th>
-            <th>Tujuan</th>
-            <th>Tanggal</th>
-            <th>Waktu</th>
-            <th>PIC</th>
-            <th>Jumlah</th>
-            <th>Catatan</th>
-            <th>ID Booking</th>
-            {{-- <th>Status</th> --}}
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <table class="table table-striped data-table display nowrap" width="100%">
+        <thead>
+            <tr>
+                {{-- <th width="50px">#</th> --}}
+                <th width="60px"></th>
+                <th>Ruangan</th>
+                <th>Tujuan</th>
+                <th>Tanggal</th>
+                <th>Waktu</th>
+                <th>PIC</th>
+                <th>Jumlah</th>
+                <th>Catatan</th>
+                <th>ID Booking</th>
+                {{-- <th>Status</th> --}}
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 @stop
 
 @section('css')
@@ -157,7 +157,7 @@
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{!! route('bookingroom.data') !!}',
+                ajax: '{!! route('bookingroom.approvedata') !!}',
                 columnDefs: [{
                     searchable: false,
                     orderable: false,
@@ -215,13 +215,6 @@
                 ]
             });
 
-            $("#createNewData").click(function() {
-                $("#data_id").val('');
-                $("#dataForm").trigger("reset");
-                $("#modalHeading").html("Form Booking");
-                $("#ajaxModal").modal('show');
-            });
-
             $("#btnSave").click(function(e) {
                 e.preventDefault();
                 $(this).html('Booking Ruangan');
@@ -275,6 +268,7 @@
                     $("#pic").val(data.pic);
                     $("#qty").val(data.qty);
                     $("#note").val(data.note);
+                    $("#booking_id").val(data.booking_id);
                     $("#status").val(data.status);
                 });
             });

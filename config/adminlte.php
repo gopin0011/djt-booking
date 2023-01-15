@@ -322,7 +322,13 @@ return [
         [
             'text' => 'users',
             'url'  => 'users',
-            'icon' => 'fas fa-fw fa-users-gear',
+            'icon' => 'fas fa-fw fa-users',
+            'can'  => ['dev', 'ga','gastaff'],
+        ],
+        [
+            'text' => 'drivers',
+            'url'  => 'drivers',
+            'icon' => 'fas fa-fw fa-user-gear',
             'can'  => ['dev', 'ga','gastaff'],
         ],
         [
@@ -338,30 +344,36 @@ return [
             'can'  => ['dev', 'ga','gastaff'],
         ],
 
-        ['header' => 'booking', 'can'  => ['dev', 'ga','gastaff', 'fo', 'dept']],
+        ['header' => 'booking', 'can'  => ['dev', 'ga','gastaff','dept']],
+        [
+            'text' => 'bookingrooms_all',
+            'url'  => 'booking-room/all',
+            'icon' => 'fas fa-fw fa-list',
+            'can'  => ['dev', 'ga','gastaff', 'dept'],
+        ],
         [
             'text' => 'bookingrooms',
             'url'  => 'booking-room',
             'icon' => 'fas fa-fw fa-bookmark',
-            'can'  => ['dev', 'ga','gastaff'],
+            'can'  => ['dev', 'ga','gastaff', 'dept'],
         ],
         [
             'text' => 'bookingcars',
             'url'  => 'booking-vehicle',
             'icon' => 'fas fa-fw fa-bookmark',
-            'can'  => ['dev', 'ga','gastaff'],
+            'can'  => ['dev', 'ga','gastaff', 'dept'],
         ],
 
         ['header' => 'approval', 'can'  => ['dev', 'ga','gastaff']],
         [
             'text' => 'approoms',
-            'url'  => 'bookingrooms/approval',
+            'url'  => 'booking-room/approve',
             'icon' => 'fas fa-fw fa-check',
             'can'  => ['dev', 'ga','gastaff'],
         ],
         [
             'text' => 'appcars',
-            'url'  => 'bookingcars/approval',
+            'url'  => 'booking-vehicle/approve',
             'icon' => 'fas fa-fw fa-check',
             'can'  => ['dev', 'ga','gastaff'],
         ],
@@ -380,18 +392,18 @@ return [
             'can'  => ['dev','fo'],
         ],
 
-        ['header' => 'account_settings'],
+        ['header' => 'account_settings','can'  => ['dev', 'ga', 'it', 'dept']],
         [
             'text' => 'profile',
             'url'  => 'users/change-data',
             'icon' => 'fas fa-fw fa-user',
-            'can'  => ['dev', 'ga', 'it']
+            'can'  => ['dev', 'ga', 'it', 'dept']
         ],
         [
             'text' => 'change_password',
             'url'  => 'users/change-password',
             'icon' => 'fas fa-fw fa-lock',
-            'can'  => ['dev', 'ga', 'it']
+            'can'  => ['dev', 'ga', 'it', 'dept']
         ],
     ],
 

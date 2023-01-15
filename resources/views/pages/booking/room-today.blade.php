@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-chalkboard"></i> <strong>Ruang Meeting</strong> {{ $date }}</h5>
+                <h5><i class="fa fa-chalkboard"></i> <strong>Ruang Meeting</strong> | {{ $date }}</h5>
             </div>
         </div>
     </div>
@@ -17,13 +17,13 @@
         <thead>
             <tr>
                 {{-- <th width="50px">#</th> --}}
+                <th>ID Booking</th>
                 <th>Ruangan</th>
                 <th>Tujuan</th>
                 <th>Waktu</th>
                 <th>PIC</th>
                 <th>Jumlah</th>
-                <th>Status</th>
-                <th>ID Booking</th>
+                {{-- <th>Status</th> --}}
             </tr>
         </thead>
         <tbody></tbody>
@@ -80,13 +80,17 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [6, 'asc']
+                    [0, 'asc']
                 ],
                 columns: [
                     // {
                     //     data: 'DT_RowIndex',
                     //     name: 'DT_RowIndex'
                     // },
+                    {
+                        data: 'booking_id',
+                        name: 'booking_id'
+                    },
                     {
                         data: 'room',
                         name: 'room'
@@ -107,14 +111,11 @@
                         data: 'qty',
                         name: 'qty'
                     },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'booking_id',
-                        name: 'booking_id'
-                    },
+                    // {
+                    //     data: 'status',
+                    //     name: 'status'
+                    // },
+
                 ]
             });
 

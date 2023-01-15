@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('endtime')->nullable();
             $table->string('date')->nullable();
             $table->string('pic')->nullable();
-            $table->integer('qty')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

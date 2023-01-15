@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-car"></i> <strong>Kendaraan</strong> {{ $date }}</h5>
+                <h5><i class="fa fa-car"></i> <strong>Kendaraan</strong> | {{ $date }}</h5>
             </div>
         </div>
     </div>
@@ -16,6 +16,7 @@
     <table class="table table-striped data-table display nowrap" width="100%">
         <thead>
             <tr>
+                <th>ID Booking</th>
                 <th>Kendaraan</th>
                 <th>Driver</th>
                 <th>Kegiatan</th>
@@ -23,8 +24,7 @@
                 <th>Waktu</th>
                 <th>PIC</th>
                 <th>Jumlah</th>
-                <th>Status</th>
-                <th>ID Booking</th>
+                {{-- <th>Status</th> --}}
             </tr>
         </thead>
         <tbody></tbody>
@@ -81,9 +81,13 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [8, 'asc']
+                    [0, 'asc']
                 ],
                 columns: [
+                    {
+                        data: 'booking_id',
+                        name: 'booking_id'
+                    },
                     {
                         data: 'car',
                         name: 'car'
@@ -112,14 +116,11 @@
                         data: 'qty',
                         name: 'qty'
                     },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'booking_id',
-                        name: 'booking_id'
-                    },
+                    // {
+                    //     data: 'status',
+                    //     name: 'status'
+                    // },
+
                 ]
             });
 

@@ -6,88 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-bookmark"></i> <strong>Booking Ruang Meeting</strong></h5>
-            </div>
-            <div class="col">
-                <a type="button" href="javascript:void(0)" id="createNewData" class="btn btn-primary float-right">+ Tambah</a>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="ajaxModal" arial-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modalHeading"></h4>
-                </div>
-                <div class="modal-body">
-                    <form id="dataForm" name="dataForm" class="form-horizontal">
-                        @csrf
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <input type="hidden" name="data_id" id="data_id">
-                                    <input type="hidden" name="status" id="status">
-                                    <div class="input-group mb-3">
-                                        <div class="col-sm-12">
-                                            <label for="name">Pilih Ruangan</label><br>
-                                            <select type="text" class="form-control" id="room" name="room"
-                                                value="">
-                                                @foreach ($rooms as $data)
-                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        {{-- <div class="col-sm-4">
-                                            <label for="type">Jumlah Peserta</label><br>
-                                            <input type="number" class="form-control" value="1" name="qty"
-                                                id="qty">
-                                        </div> --}}
-                                    </div>
-
-                                    <div class="input-group mb-3">
-
-                                        <div class="col-sm-4">
-                                            <label for="type">Tanggal Meeting</label><br>
-                                            <input type="date" class="form-control" name="date" id="date">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label for="type">Waktu Mulai</label><br>
-                                            <input type="time" class="form-control" name="starttime" id="starttime">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label for="type">Waktu Selesai</label><br>
-                                            <input type="time" class="form-control" name="endtime" id="endtime">
-                                        </div>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="col-sm-12">
-                                            <label for="number">Tujuan Meeting</label><br>
-                                            <textarea rows="2" class="form-control" name="purpose" id="purpose"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="col-sm-12">
-                                            <label for="note">Catatan</label><br>
-                                            <textarea rows="3" class="form-control" name="note" id="note"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <button type="submit" class="btn btn-primary btn-block" id="btnSave" value="create">Booking Ruangan</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <h5><i class="fa fa-list"></i> <strong>Jadwal Booking Ruangan</strong></h5>
             </div>
         </div>
     </div>
@@ -97,17 +16,13 @@
 <table class="table table-striped data-table display nowrap" width="100%">
     <thead>
         <tr>
-            {{-- <th width="50px">#</th> --}}
-            <th width="60px">Status</th>
+            {{-- <th>ID Booking</th> --}}
             <th>Ruangan</th>
             <th>Tujuan</th>
             <th>Tanggal</th>
             <th>Waktu</th>
             <th>PIC</th>
-            <th>Jumlah</th>
-            <th>Catatan</th>
-            <th>ID Booking</th>
-            {{-- <th>Status</th> --}}
+            {{-- <th>Jumlah</th> --}}
         </tr>
     </thead>
     <tbody></tbody>
@@ -157,24 +72,20 @@
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{!! route('bookingroom.data') !!}',
+                ajax: '{!! route('bookingroom.dataall') !!}',
                 columnDefs: [{
                     searchable: false,
                     orderable: false,
                     targets: 0,
                 }, ],
                 order: [
-                    [8, 'asc']
+                    [2, 'asc']
                 ],
                 columns: [
                     // {
-                    //     data: 'DT_RowIndex',
-                    //     name: 'DT_RowIndex'
+                    //     data: 'booking_id',
+                    //     name: 'booking_id'
                     // },
-                    {
-                        data: 'action',
-                        name: 'action'
-                    },
                     {
                         data: 'room',
                         name: 'room'
@@ -195,23 +106,10 @@
                         data: 'pic',
                         name: 'pic'
                     },
-                    {
-                        data: 'qty',
-                        name: 'qty'
-                    },
-                    {
-                        data: 'note',
-                        name: 'note'
-                    },
                     // {
-                    //     data: 'status',
-                    //     name: 'status'
+                    //     data: 'qty',
+                    //     name: 'qty'
                     // },
-                    {
-                        data: 'booking_id',
-                        name: 'booking_id'
-                    },
-
                 ]
             });
 
@@ -275,9 +173,18 @@
                     $("#pic").val(data.pic);
                     $("#qty").val(data.qty);
                     $("#note").val(data.note);
-                    $("#status").val(data.status);
                 });
             });
+
+            function loadlink() {
+                $('#reload');
+                table.draw();
+            }
+
+            loadlink();
+            setInterval(function() {
+                loadlink()
+            }, 15000);
         });
     </script>
 @stop
