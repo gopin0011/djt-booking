@@ -76,12 +76,12 @@
                                                 id="timedepature">
                                         </div>
                                     </div>
-                                    <div class="input-group mb-3">
+                                    {{-- <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="note">Catatan</label><br>
                                             <textarea rows="3" class="form-control" name="note" id="note"></textarea>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="name">Status Approve</label><br>
@@ -127,7 +127,7 @@
                 <th>PIC</th>
                 <th>Jumlah</th>
                 {{-- <th>Status</th> --}}
-                <th>Catatan</th>
+                {{-- <th>Catatan</th> --}}
                 <th>ID Booking</th>
             </tr>
         </thead>
@@ -185,7 +185,7 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [10, 'asc']
+                    [9, 'asc']
                 ],
                 columns: [
                     // {
@@ -232,10 +232,10 @@
                     //     data: 'status',
                     //     name: 'status'
                     // },
-                    {
-                        data: 'note',
-                        name: 'note'
-                    },
+                    // {
+                    //     data: 'note',
+                    //     name: 'note'
+                    // },
                     {
                         data: 'booking_id',
                         name: 'booking_id'
@@ -300,7 +300,7 @@
                     $("#destination").val(data.destination);
                     $("#datedepature").val(data.datedepature);
                     $("#timedepature").val(data.timedepature);
-                    $("#note").val(data.note);
+                    // $("#note").val(data.note);
                     $("#driver").val(data.driver);
                     $("#car").val(data.car);
                     $("#status").val(data.status);

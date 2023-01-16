@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookingRoom;
+use App\Models\DetailBookingRoom;
 use App\Models\Room;
 use App\Models\User;
 use Carbon\Carbon;
@@ -37,27 +38,39 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $id = $row->booking_id;
-                    // $qty = count($id);
-                    $qty = 0;
+                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    if($row->status == '0')
+                    {
+                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Add" class="add btn btn-primary btn-sm addQty"><i class="fa fa-add"></i></a>';
+                    }else{
+                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Show" class="show btn btn-success btn-sm showQty"><i class="fa fa-magnifying-glass"></i></a>';
+                    }
+                    $qty = $btn .' '. count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    if($row->status == '1')
-                    {
-                        $btn = 'Disetujui';
-                    }else{
-                        $btn = 'Ditolak';
+                    if ($row->status == 1) {
+                        $btn = "Diterima";
+                    } else if ($row->status == 2) {
+                        $btn = "Ditolak";
+                    } else {
+                        if($row->note == ''){
+                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Review" class="review btn btn-warning btn-sm reviewData">Beri Ulasan</a>';
+                        }else{
+                            $btn = "Selesai";
+                        }
                     }
 
                     if($row->status == '0')
@@ -99,18 +112,19 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $id = $row->booking_id;
-                    // $qty = count($id);
-                    $qty = 0;
+                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    $qty = count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
@@ -145,18 +159,19 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $id = $row->booking_id;
-                    // $qty = count($id);
-                    $qty = 0;
+                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    $qty = count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
@@ -196,18 +211,19 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $id = $row->booking_id;
-                    // $qty = count($id);
-                    $qty = 0;
+                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    $qty = count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
@@ -250,7 +266,7 @@ class BookingRoomController extends Controller
                         'date' => $request->date,
                         'pic' => Auth::user()->id,
                         // 'qty' => $request->qty,
-                        'note' => $request->note,
+                        'note' => '',
                         'status' => '0'
                     ]
                 );
@@ -263,7 +279,7 @@ class BookingRoomController extends Controller
                 $data->update(
                     [
                         'purpose' => $request->purpose,
-                        'note' => $request->note,
+                        // 'note' => '',
                         'status' => $request->status
                     ]
                 );
@@ -276,12 +292,24 @@ class BookingRoomController extends Controller
                         'starttime' => $request->starttime,
                         'endtime' => $request->endtime,
                         'date' => $request->date,
-                        'note' => $request->note,
+                        // 'note' => '',
                         'status' => $request->status
                     ]
                 );
             }
         }
+
+        return response()->json(['success' => 'Data telah berhasil disimpan']);
+    }
+
+    public function review(Request $request)
+    {
+        $data = BookingRoom::find($request->data_ids);
+        $data->update(
+            [
+                'note' => $request->note
+            ]
+        );
 
         return response()->json(['success' => 'Data telah berhasil disimpan']);
     }

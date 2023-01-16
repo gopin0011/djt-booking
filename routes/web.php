@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingCarController;
 use App\Http\Controllers\BookingRoomController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\DetailBookingRoomController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
@@ -81,13 +82,17 @@ Route::group(['middleware' => ['auth']], function () {
     //APPROVE RUANGAN
     Route::get('booking-room/approve', [BookingRoomController::class, 'approve'])->name('bookingroom.approve');
     Route::post('booking-room/approve', [BookingRoomController::class, 'storeApprove'])->name('bookingroom.storeapprove');
+    Route::post('booking-room/review', [BookingRoomController::class, 'review'])->name('bookingroom.review');
     Route::get('booking-room/approve/data', [BookingRoomController::class, 'approveData'])->name('bookingroom.approvedata');
 
     //APPROVE KENDARAAN
     Route::get('booking-vehicle/approve', [BookingCarController::class, 'approve'])->name('bookingcar.approve');
     Route::post('booking-vehicle/approve', [BookingCarController::class, 'storeApprove'])->name('bookingcar.storeapprove');
+    Route::post('booking-vehicle/review', [BookingCarController::class, 'review'])->name('bookingcar.review');
     Route::get('booking-vehicle/approve/data', [BookingCarController::class, 'approveData'])->name('bookingcar.approvedata');
 
+    Route::get('detail-booking-room', [DetailBookingRoomController::class, 'index'])->name('detailbookingroom.index');
+    Route::get('detail-booking-room/{id}', [DetailBookingRoomController::class, 'detail'])->name('detailbookingroom.detail');
     //REPORT
     // Route::get('tamu/report', [GuestController::class, 'reportsearch'])->name('report.search');
     // Route::get('tamu/report/cetak', [GuestController::class, 'reportprint'])->name('report.print');

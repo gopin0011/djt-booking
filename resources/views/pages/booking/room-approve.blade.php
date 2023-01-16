@@ -57,12 +57,12 @@
                                             <textarea rows="2" class="form-control" name="purpose" id="purpose"></textarea>
                                         </div>
                                     </div>
-                                    <div class="input-group mb-3">
+                                    {{-- <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="note">Catatan</label><br>
                                             <textarea rows="3" class="form-control" name="note" id="note"></textarea>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="name">Status Approve</label><br>
@@ -105,7 +105,7 @@
                 <th>Waktu</th>
                 <th>PIC</th>
                 <th>Jumlah</th>
-                <th>Catatan</th>
+                {{-- <th>Catatan</th> --}}
                 <th>ID Booking</th>
                 {{-- <th>Status</th> --}}
             </tr>
@@ -164,7 +164,7 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [8, 'asc']
+                    [7, 'asc']
                 ],
                 columns: [
                     // {
@@ -199,10 +199,10 @@
                         data: 'qty',
                         name: 'qty'
                     },
-                    {
-                        data: 'note',
-                        name: 'note'
-                    },
+                    // {
+                    //     data: 'note',
+                    //     name: 'note'
+                    // },
                     // {
                     //     data: 'status',
                     //     name: 'status'

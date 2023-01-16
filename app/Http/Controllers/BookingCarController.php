@@ -30,9 +30,9 @@ class BookingCarController extends Controller
                 })
                 ->addColumn('driver', function ($row) {
                     $data = User::find($row->driver);
-                    if($row->driver == ''){
+                    if ($row->driver == '') {
                         $driver = 'Belum ada driver';
-                    }else{
+                    } else {
                         $driver = $data->name;
                     }
                     return $driver;
@@ -44,30 +44,43 @@ class BookingCarController extends Controller
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    if($row->status == '1')
-                    {
-                        $btn = 'Disetujui';
-                    }else{
-                        $btn = 'Ditolak';
+                    if ($row->status == 1) {
+                        $btn = "Diterima";
+                    } else if ($row->status == 2) {
+                        $btn = "Ditolak";
+                    } else {
+                        if ($row->rating == '') {
+                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Review" class="review btn btn-warning btn-sm reviewData">Beri Ulasan</a>';
+                        } else {
+                            $btn = "Selesai";
+                        }
                     }
-
-                    if($row->status == '0')
-                    {
+                    if ($row->status == '0') {
                         $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editData"><i class="fa fa-edit"></i></a>';
                         $btn .= '&nbsp;&nbsp;';
                         $btn .= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
                     }
                     return $btn;
                 })
-                ->rawColumns(['car','driver','user','status', 'action'])
+                ->addColumn('rating', function ($row) {
+                    if ($row->rating == '') {
+                        $rating = "Belum ada ulasan";
+                    } else {
+                        $rating = '( ⭐ ' . $row->rating . ' ) ' . $row->note;
+                    }
+                    return $rating;
+                })
+                ->rawColumns(['car', 'driver', 'user', 'status', 'action', 'rating'])
                 ->make(true);
             return $allData;
         }
@@ -76,14 +89,14 @@ class BookingCarController extends Controller
     public function today()
     {
         $date = Carbon::now()->format('l, j F Y');
-        return view('pages.booking.car-today',compact('date'));
+        return view('pages.booking.car-today', compact('date'));
     }
 
     public function approve()
     {
         $cars = Car::where('status', '0')->get();
-        $drivers = User::where([['status', '0'],['role','5']])->get();
-        return view('pages.booking.car-approve', compact('cars','drivers'));
+        $drivers = User::where([['status', '0'], ['role', '5']])->get();
+        return view('pages.booking.car-approve', compact('cars', 'drivers'));
     }
 
     public function approveData(Request $request)
@@ -98,9 +111,9 @@ class BookingCarController extends Controller
                 })
                 ->addColumn('driver', function ($row) {
                     $data = User::find($row->driver);
-                    if($row->driver == ''){
+                    if ($row->driver == '') {
                         $driver = 'Belum ada driver';
-                    }else{
+                    } else {
                         $driver = $data->name;
                     }
                     return $driver;
@@ -116,10 +129,12 @@ class BookingCarController extends Controller
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
@@ -129,7 +144,7 @@ class BookingCarController extends Controller
                     $btn .= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
                     return $btn;
                 })
-                ->rawColumns(['time', 'driver', 'car','user', 'status', 'action'])
+                ->rawColumns(['time', 'driver', 'car', 'user', 'status', 'action'])
                 ->make(true);
             return $allData;
         }
@@ -147,9 +162,9 @@ class BookingCarController extends Controller
                 })
                 ->addColumn('driver', function ($row) {
                     $data = User::find($row->driver);
-                    if($row->driver == ''){
+                    if ($row->driver == '') {
                         $driver = 'Belum ada driver';
-                    }else{
+                    } else {
                         $driver = $data->name;
                     }
                     return $driver;
@@ -161,14 +176,16 @@ class BookingCarController extends Controller
                 ->addColumn('status', function ($row) {
                     if ($row->status == 0) {
                         $status = "Belum Diproses";
-                    } else if ($row->status == 0) {
+                    } else if ($row->status == 1) {
                         $status = "Diterima";
-                    } else {
+                    } else if ($row->status == 2) {
                         $status = "Ditolak";
+                    } else {
+                        $status = "Selesai";
                     }
                     return $status;
                 })
-                ->rawColumns(['car','driver','user','status'])
+                ->rawColumns(['car', 'driver', 'user', 'status'])
                 ->make(true);
             return $allData;
         }
@@ -195,8 +212,9 @@ class BookingCarController extends Controller
                     'datedepature' => $request->datedepature,
                     'user' => Auth::user()->id,
                     'qty' => $request->qty,
-                    'note' => $request->note,
-                    'status' => '0'
+                    'status' => '0',
+                    'rating' => '',
+                    'note' => ''
                 ]
             );
         } else {
@@ -210,11 +228,34 @@ class BookingCarController extends Controller
                     'timedepature' => $request->timedepature,
                     'datedepature' => $request->datedepature,
                     'qty' => $request->qty,
-                    'note' => $request->note,
                     'status' => $request->status
                 ]
             );
         }
+
+        return response()->json(['success' => 'Data telah berhasil disimpan']);
+    }
+
+    public function review(Request $request)
+    {
+        $data = BookingCar::find($request->data_ids);
+
+        if($request->rating <= 1)
+        {
+            $rating = 1;
+        }else if ($request->rating >= 5)
+        {
+            $rating = 5;
+        }else{
+            $rating = $request->rating;
+        }
+
+        $data->update(
+            [
+                'rating' => $rating,
+                'note' => $request->note
+            ]
+        );
 
         return response()->json(['success' => 'Data telah berhasil disimpan']);
     }

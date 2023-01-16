@@ -72,12 +72,12 @@
                                                 id="timedepature">
                                         </div>
                                     </div>
-                                    <div class="input-group mb-3">
+                                    {{-- <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="note">Catatan</label><br>
                                             <textarea rows="3" class="form-control" name="note" id="note"></textarea>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="row">
@@ -87,6 +87,51 @@
                                             <button type="submit" class="btn btn-primary btn-block" id="btnSave"
                                                 value="create">Booking Kendaraan</button>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ajaxModalReview" arial-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalHeadingReview"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="dataFormReview" name="dataFormReview" class="form-horizontal">
+                        @csrf
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <input type="hidden" name="data_ids" id="data_ids">
+                                    <div class="input-group mb-3">
+                                        <div class="col-sm-12">
+                                            <label for="note">Ulasan</label><br>
+                                            <textarea rows="3" class="form-control" name="note" id="note" placeholder="Ulasan driver"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="col-sm-12">
+                                            <label for="note">Rating</label><br>
+                                            <input type="number" class="form-control" value="1" name="rating" placeholder="Rating untuk driver (1-5)"
+                                            id="rating" max="5" min="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary btn-block" id="btnSaveReview"
+                                            value="create">Beri Ulasan</button>
                                     </div>
                                 </div>
                             </div>
@@ -113,8 +158,9 @@
                 <th>PIC</th>
                 <th>Jumlah</th>
                 {{-- <th>Status</th> --}}
-                <th>Catatan</th>
+                {{-- <th>Catatan</th> --}}
                 <th>ID Booking</th>
+                <th>Ulasan</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -171,7 +217,7 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [10, 'asc']
+                    [9, 'asc']
                 ],
                 columns: [
                     // {
@@ -218,13 +264,17 @@
                     //     data: 'status',
                     //     name: 'status'
                     // },
-                    {
-                        data: 'note',
-                        name: 'note'
-                    },
+                    // {
+                    //     data: 'note',
+                    //     name: 'note'
+                    // },
                     {
                         data: 'booking_id',
                         name: 'booking_id'
+                    },
+                    {
+                        data: 'rating',
+                        name: 'rating'
                     },
                 ]
             });
@@ -253,6 +303,27 @@
                     error: function(data) {
                         console.log('Error', data);
                         $("#btnSave").html('Booking Kendaraan');
+                    }
+                });
+            });
+
+            $("#btnSaveReview").click(function(e) {
+                e.preventDefault();
+                $(this).html('Beri Ulasan');
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('bookingcar.review') }}",
+                    data: $("#dataFormReview").serialize(),
+                    dataType: 'json',
+                    success: function(data) {
+                        $("#dataFormReview").trigger("reset");
+                        $("#ajaxModalReview").modal('hide');
+                        table.draw();
+                    },
+                    error: function(data) {
+                        console.log('Error', data);
+                        $("#btnSaveReview").html('Beri Ulasan');
                     }
                 });
             });
@@ -286,10 +357,21 @@
                     $("#destination").val(data.destination);
                     $("#datedepature").val(data.datedepature);
                     $("#timedepature").val(data.timedepature);
-                    $("#note").val(data.note);
+                    // $("#note").val(data.note);
                     $("#status").val(data.status);
                     $("#car").val(data.car);
                     $("#driver").val(data.driver);
+                });
+            });
+
+            $('body').on('click', '.reviewData', function() {
+                var data_id = $(this).data("id");
+                $.get("{{ route('bookingcar.index') }}" + "/" + data_id + "/edit", function(data) {
+                    $("#modalHeadingReview").html("Beri Ulasan");
+                    $("#ajaxModalReview").modal('show');
+                    $("#data_ids").val(data.id);
+                    $("#note").val(data.note);
+                    $("#rating").val(data.rating);
                 });
             });
         });
