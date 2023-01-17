@@ -10,6 +10,7 @@ use Yajra\DataTables\DataTables;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -26,7 +27,7 @@ class UserController extends Controller
 
     public function showData(Request $request)
     {
-        $data = User::where([['id', '<>', 1],['role','<>','5']])->get();
+        $data = User::where([['id', '<>', 1], ['role', '<>', '5']])->get();
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
@@ -49,10 +50,9 @@ class UserController extends Controller
                     return $role;
                 })
                 ->addColumn('status', function ($row) {
-                    if ($row->status == 0)
-                    {
+                    if ($row->status == 0) {
                         $status = "Aktif";
-                    }else{
+                    } else {
                         $status = "Nonaktif";
                     }
                     return $status;
@@ -79,11 +79,20 @@ class UserController extends Controller
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('status', function ($row) {
-                    if ($row->status == 0)
-                    {
-                        $status = "Aktif";
+                ->addColumn('image', function ($row) {
+                    if($row->image){
+                        $data = $row->image;
+                        $x = asset('storage/driver/'.$data);
+                        $show = '<a href="'.$x.'" target="_blank"><div><img src="'.$x.'" alt=""></div></a>';
                     }else{
+                        $show = '<div><img src="'.'default.png'.'" alt=""></div>';
+                    }
+                    return $show;
+                })
+                ->addColumn('status', function ($row) {
+                    if ($row->status == 0) {
+                        $status = "Aktif";
+                    } else {
                         $status = "Nonaktif";
                     }
                     return $status;
@@ -98,7 +107,7 @@ class UserController extends Controller
                     }
                     return $btn;
                 })
-                ->rawColumns(['status', 'action'])
+                ->rawColumns(['image','status', 'action'])
                 ->make(true);
             return $allData;
         }
@@ -112,81 +121,101 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->data_id == "") {
-            User::updateOrCreate(
-                ['id' => $request->data_id],
-                [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'nik' => $request->nik,
-                    'phone' => $request->phone,
-                    'address' => $request->address,
-                    'role' => $request->role,
-                    'password' => bcrypt("12345678"),
-                    'status' => $request->status,
-                ]
-            );
-        } else {
-            User::updateOrCreate(
-                ['id' => $request->data_id],
-                [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'nik' => $request->nik,
-                    'phone' => $request->phone,
-                    'address' => $request->address,
-                    'role' => $request->role,
-                    'status' => $request->status,
-                ]
-            );
+        $request->validate([
+            'image' => 'image|file|max:2048',
+            'name'  => 'required',
+            'email' => 'required|email'
+        ]);
+
+        $dataId = $request->data_id;
+
+        if($dataId=='')
+        {
+            $details = [
+                'password' => bcrypt('12345678'),
+                'name' => $request->name,
+                'email' => $request->email,
+                'nik' => $request->nik,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'role' => $request->role,
+                'status' => $request->status,
+            ];
+        }else{
+            $details = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'nik' => $request->nik,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'role' => $request->role,
+                'status' => $request->status,
+            ];
         }
-        return response()->json(['success' => 'Data telah berhasil disimpan']);
+
+        if($files = $request->file('image')){
+            $file = 'storage/driver/' . $request->hidden_image;
+            File::delete(($file));
+
+            $destinationPath = 'storage/driver/';
+            $profileImage = now()->format('ymdhis') .'.'. $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
+            $details['image'] = "$profileImage";
+        }
+
+        $dataUser   =   User::updateOrCreate(['id' => $dataId], $details);
+        return response()->json($dataUser);
     }
 
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $data = User::find($id);
+        $file = 'storage/driver/' . $data->image;
+        File::delete(($file));
+        $data->delete();
         return response()->json(['success' => 'Data telah berhasil dihapus']);
     }
 
     //DATA
-    public function changedata(){
+    public function changedata()
+    {
         $id = Auth::user()->id;
         $data = User::find($id);
         return view('pages.user.changedata', compact('data'));
     }
 
-    public function storedata(Request $request){
+    public function storedata(Request $request)
+    {
 
-            User::find(auth()->user()->id)->update([
-                'name'=> $request->name,
-                'nik'=> $request->nik,
-                'phone'=> $request->phone,
-                'address'=> $request->address
-            ]);
-            return redirect(route('home'));
+        User::find(auth()->user()->id)->update([
+            'name' => $request->name,
+            'nik' => $request->nik,
+            'phone' => $request->phone,
+            'address' => $request->address
+        ]);
+        return redirect(route('home'));
     }
 
     //PASSWORD
-    public function changepassword(){
+    public function changepassword()
+    {
         return view('pages.user.changepassword');
     }
 
-    public function storepassword(Request $request){
+    public function storepassword(Request $request)
+    {
         $validate = $request->validate([
             'old' => ['required', new MatchOldPassword],
             'new' => ['required', 'string', 'min:8'],
             'conf' => ['same:new'],
         ]);
 
-        if($validate)
-        {
-            User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new)]);
+        if ($validate) {
+            User::find(auth()->user()->id)->update(['password' => Hash::make($request->new)]);
             // toast('Password telah berhasil diubah','success');
             Auth::logout();
             return redirect(route('login'));
-        }
-        else{
+        } else {
             // toast('Gagal ubah password','error');
             return redirect(route('changepassword'));
         }

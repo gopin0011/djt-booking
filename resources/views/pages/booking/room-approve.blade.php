@@ -272,6 +272,11 @@
                     $("#status").val(data.status);
                 });
             });
+
+            $('body').on('click', '.showQty', function() {
+                var data_id = $(this).data("id");
+                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id + '/show';
+            });
         });
     </script>
 @stop

@@ -355,7 +355,12 @@
 
             $('body').on('click', '.addQty', function() {
                 var data_id = $(this).data("id");
-                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id;
+                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id + '/detail';
+            });
+
+            $('body').on('click', '.showQty', function() {
+                var data_id = $(this).data("id");
+                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id + '/show';
             });
         });
     </script>

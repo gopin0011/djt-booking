@@ -357,6 +357,12 @@ return [
                     'shift' => 'ml-4',
                 ],
                 [
+                    'text' => 'Daftar Karyawan',
+                    'url'  => 'employees',
+                    'icon' => 'fas fa-fw fa-database',
+                    'shift' => 'ml-4',
+                ],
+                [
                     'text' => 'rooms',
                     'url'  => 'rooms',
                     'icon' => 'fas fa-fw fa-chalkboard',

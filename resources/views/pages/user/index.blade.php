@@ -22,30 +22,17 @@
             <div class="modal-body">
                 <form id="dataForm" name="dataForm" class="form-horizontal">
                     <input type="hidden" name="data_id" id="data_id">
+                    <input type="hidden" name="nik" id="nik" value="-">
+                    <input type="hidden" name="phone" id="phone" value="-">
+                    <input type="hidden" name="address" id="address" value="-">
                     <div class="form-group">
-                        Nama: <br>
+
                         <input type="text" class="form-control" id="name" name="name"
-                        placeholder="Masukkan nama pengguna" required>
+                        placeholder="Nama pengguna" required>
                     </div>
                     <div class="form-group">
-                        Email: <br>
                         <input type="text" class="form-control" id="email" name="email"
-                        placeholder="Masukkan email pengguna" required>
-                    </div>
-                    <div class="form-group">
-                        NIK: <br>
-                        <input type="text" class="form-control" id="nik" name="nik"
-                        placeholder="Masukkan NIK pengguna" required>
-                    </div>
-                    <div class="form-group">
-                        Telepon: <br>
-                        <input type="text" class="form-control" id="phone" name="phone"
-                        placeholder="Masukkan telepon pengguna" required>
-                    </div>
-                    <div class="form-group">
-                        Alamat: <br>
-                        <input type="text" class="form-control" id="address" name="address"
-                        placeholder="Masukkan alamat pengguna" required>
+                        placeholder="Email pengguna" required>
                     </div>
                     <div class="form-group">
                         Hak Akses: <br>
@@ -84,9 +71,9 @@
             <th width="50px">#</th>
             <th>Pengguna</th>
             <th>Email</th>
-            <th>NIK</th>
-            <th>Telepon</th>
-            <th>Alamat</th>
+            {{-- <th>NIK</th> --}}
+            {{-- <th>Telepon</th> --}}
+            {{-- <th>Alamat</th> --}}
             <th>Hak Akses</th>
             <th>Status</th>
             <th width="60px"></th>
@@ -94,6 +81,8 @@
     </thead>
     <tbody></tbody>
 </table>
+<p>* Email digunakan untuk mengakses aplikasi web</p>
+<p>** Password default adalah 12345678</p>
 @stop
 
 @section('css')
@@ -154,9 +143,9 @@
                     {data:'DT_RowIndex',name:'DT_RowIndex'},
                     {data:'name',name:'name'},
                     {data:'email',name:'email'},
-                    {data:'nik',name:'nik'},
-                    {data:'phone',name:'phone'},
-                    {data:'address',name:'address'},
+                    // {data:'nik',name:'nik'},
+                    // {data:'phone',name:'phone'},
+                    // {data:'address',name:'address'},
                     {data:'role',name:'role'},
                     {data:'status',name:'status'},
                     {data:'action',name:'action'},

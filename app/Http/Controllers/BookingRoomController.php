@@ -114,6 +114,8 @@ class BookingRoomController extends Controller
                 ->addColumn('qty', function ($row) {
                     $data = DetailBookingRoom::where('booking_id',$row->id)->get();
                     $qty = count($data);
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Show" class="show btn btn-success btn-sm showQty"><i class="fa fa-magnifying-glass"></i></a>';
+                    $qty = $btn .' '. count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
@@ -161,6 +163,8 @@ class BookingRoomController extends Controller
                 ->addColumn('qty', function ($row) {
                     $data = DetailBookingRoom::where('booking_id',$row->id)->get();
                     $qty = count($data);
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Show" class="show btn btn-success btn-sm showQty"><i class="fa fa-magnifying-glass"></i></a>';
+                    $qty = $btn .' '. count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {

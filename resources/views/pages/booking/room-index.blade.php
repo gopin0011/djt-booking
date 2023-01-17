@@ -6,28 +6,22 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-chalkboard"></i> <strong>Ruang Meeting</strong> | {{ $date }}</h5>
+                <h5><i class="fa fa-magnifying-glass"></i> <strong>Peserta Meeting</strong></h5>
             </div>
         </div>
     </div>
 @stop
 
 @section('content')
-    <table class="table table-striped data-table display nowrap" width="100%">
-        <thead>
-            <tr>
-                {{-- <th width="50px">#</th> --}}
-                <th>ID Booking</th>
-                <th>Ruangan</th>
-                <th>Tujuan</th>
-                <th>Waktu</th>
-                <th>PIC</th>
-                <th>Jumlah</th>
-                {{-- <th>Status</th> --}}
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<table class="table table-striped data-table display nowrap" width="100%">
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 @stop
 
 @section('css')
@@ -62,18 +56,10 @@
                 }
             });
             var table = $(".data-table").DataTable({
-                // lengthMenu:[[10,25,50,-1],['10', '25', '50', 'Show All']],
-                // dom: 'Blfrtip',
-                // buttons: [
-                //     'excel'
-                // ],
-                // rowReorder: {
-                //     selector: 'td:nth-child(2)'
-                // },
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{!! route('bookingroom.datatoday') !!}',
+                ajax: '{!! route('detailbookingroom.dataindex', ['id' => $id]) !!}',
                 columnDefs: [{
                     searchable: false,
                     orderable: false,
@@ -83,56 +69,16 @@
                     [0, 'asc']
                 ],
                 columns: [
-                    // {
-                    //     data: 'DT_RowIndex',
-                    //     name: 'DT_RowIndex'
-                    // },
                     {
-                        data: 'booking_id',
-                        name: 'booking_id'
+                        data: 'user',
+                        name: 'user'
                     },
                     {
-                        data: 'room',
-                        name: 'room'
+                        data: 'email',
+                        name: 'email'
                     },
-                    {
-                        data: 'purpose',
-                        name: 'purpose'
-                    },
-                    {
-                        data: 'time',
-                        name: 'time'
-                    },
-                    {
-                        data: 'pic',
-                        name: 'pic'
-                    },
-                    {
-                        data: 'qty',
-                        name: 'qty'
-                    },
-                    // {
-                    //     data: 'status',
-                    //     name: 'status'
-                    // },
-
                 ]
             });
-
-            $('body').on('click', '.showQty', function() {
-                var data_id = $(this).data("id");
-                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id + '/show';
-            });
-
-            function loadlink() {
-                $('#reload');
-                table.draw();
-            }
-
-            loadlink();
-            setInterval(function() {
-                loadlink()
-            }, 15000);
         });
     </script>
 @stop

@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingCarController;
 use App\Http\Controllers\BookingRoomController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\DetailBookingRoomController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,10 @@ Route::group(['middleware' => ['auth']], function () {
     //MOBIL
     Route::get('vehicles/data', [CarController::class, 'showData'])->name('vehicles.data');
     Route::resource('vehicles', CarController::class);
+
+    //MOBIL
+    Route::get('employees/data', [EmployeeController::class, 'showData'])->name('employees.data');
+    Route::resource('employees', EmployeeController::class);
 
     //RUANGAN
     Route::get('rooms/data', [RoomController::class, 'showData'])->name('rooms.data');
@@ -92,7 +97,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('booking-vehicle/approve/data', [BookingCarController::class, 'approveData'])->name('bookingcar.approvedata');
 
     Route::get('detail-booking-room', [DetailBookingRoomController::class, 'index'])->name('detailbookingroom.index');
-    Route::get('detail-booking-room/{id}', [DetailBookingRoomController::class, 'detail'])->name('detailbookingroom.detail');
+    Route::get('detail-booking-room/{id}/detail', [DetailBookingRoomController::class, 'detail'])->name('detailbookingroom.detail');
+    Route::get('detail-booking-room/{id}/show', [DetailBookingRoomController::class, 'show'])->name('detailbookingroom.show');
+    Route::get('detail-booking-room/data/{id}', [DetailBookingRoomController::class, 'showData'])->name('detailbookingroom.data');
+    Route::get('detail-booking-room/dataindex/{id}', [DetailBookingRoomController::class, 'showDataIndex'])->name('detailbookingroom.dataindex');
+    Route::post('detail-booking-room/data', [DetailBookingRoomController::class, 'store'])->name('detailbookingroom.store');
+    Route::delete('detail-booking-room/data/{id}', [DetailBookingRoomController::class, 'destroy'])->name('detailbookingroom.destroy');
     //REPORT
     // Route::get('tamu/report', [GuestController::class, 'reportsearch'])->name('report.search');
     // Route::get('tamu/report/cetak', [GuestController::class, 'reportprint'])->name('report.print');

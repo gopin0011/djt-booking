@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col float-left">
-                <h5><i class="fa fa-user-gear"></i> <strong>Daftar Driver</strong></h5>
+                <h5><i class="fa fa-database"></i> <strong>Daftar Karyawan</strong></h5>
             </div>
             <div class="col">
                 <a type="button" href="javascript:void(0)" id="createNewData" class="btn btn-primary float-right">+ Tambah</a>
@@ -20,48 +20,16 @@
                     <h4 class="modal-title" id="modalHeading"></h4>
                 </div>
                 <div class="modal-body">
-                    <form id="dataForm" name="dataForm" class="form-horizontal" enctype="multipart/form-data">
+                    <form id="dataForm" name="dataForm" class="form-horizontal">
                         <input type="hidden" name="data_id" id="data_id">
-
                         <div class="form-group">
-                            <div class="d-flex justify-content-center">
-                                <img id="modal-preview" src="default.png" alt="Preview"
-                                class="form-group hidden" width="150" height="150">
-
-                            </div>
-                            <div class="custom-file">
-                                <input id="image" class="custom-file-input" type="file" name="image"
-                                    accept="image/*" onchange="readURL(this);">
-                                <label class="custom-file-label" for="exampleInputFile">Pilih foto</label>
-                            </div>
-                            {{-- <input id="image" class="float-left" type="file" name="image" accept="image/*"
-                                onchange="readURL(this);"> --}}
-                            <input type="hidden" name="hidden_image" id="hidden_image">
-
-
-                        </div>
-
-                        <div class="form-group">
-                            <input id="name" name="name" type="text" class="form-control"
-                                placeholder="Nama driver" required>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Nama karyawan" value="" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Email driver" required>
+                            <input type="text" class="form-control" id="email" name="email"
+                                placeholder="Email karyawan" value="" required>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="nik" name="nik"
-                                placeholder="NIK driver">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="phone" name="phone"
-                                placeholder="Telepon driver">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="address" name="address"
-                                placeholder="Alamat driver">
-                        </div>
-                        <input type="hidden" name="role" id="role" value="5">
                         <div class="form-group">
                             Status: <br>
                             <select type="text" class="form-control" id="status" name="status" placeholder=""
@@ -84,28 +52,19 @@
         <thead>
             <tr>
                 <th width="50px">#</th>
-                <th>Foto</th>
-                <th>Pengguna</th>
+                <th>Nama</th>
                 <th>Email</th>
-                <th>NIK</th>
-                <th>Telepon</th>
-                <th>Alamat</th>
                 <th>Status</th>
                 <th width="60px"></th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
+    <p>* Data karyawan untuk mengirim notifikasi undangan meeting</p>
+    <p>** Tidak dapat digunakan untuk mengakses aplikasi</p>
 @stop
 
 @section('css')
-<style>
-img {
-    width: 100px; /* You can set the dimensions to whatever you want */
-    height: 100px;
-    object-fit: cover;
-}
-</style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
@@ -114,8 +73,7 @@ img {
         href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
 @stop
 
 @section('js')
@@ -157,23 +115,18 @@ img {
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{!! route('users.datadriver') !!}',
+                ajax: '{!! route('employees.data') !!}',
                 columnDefs: [{
                     searchable: false,
                     orderable: false,
                     targets: 0,
                 }, ],
                 order: [
-                    [2, 'asc']
+                    [1, 'asc']
                 ],
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
-                    },
-                    {
-                        data: 'image',
-                        name: 'image',
-                        orderable: false
                     },
                     {
                         data: 'name',
@@ -184,27 +137,12 @@ img {
                         name: 'email'
                     },
                     {
-                        data: 'nik',
-                        name: 'nik'
-                    },
-                    {
-                        data: 'phone',
-                        name: 'phone',
-                        orderable: false
-                    },
-                    {
-                        data: 'address',
-                        name: 'address',
-                        orderable: false
-                    },
-                    {
                         data: 'status',
                         name: 'status'
                     },
                     {
                         data: 'action',
-                        name: 'action',
-                        orderable: false
+                        name: 'action'
                     },
                 ]
             });
@@ -214,61 +152,35 @@ img {
                 $("#dataForm").trigger("reset");
                 $("#modalHeading").html("Tambah Data");
                 $("#ajaxModal").modal('show');
-                $('#modal-preview').attr('src', 'default.png');
             });
 
-            $('body').on('submit', '#dataForm', function(e) {
+            $("#btnSave").click(function(e) {
                 e.preventDefault();
-                var actionType = $('#btnSave').val();
-                $('#btnSave').html('Sending..');
-                var formData = new FormData(this);
+                $(this).html('Save');
+
                 $.ajax({
-                    type: 'POST',
-                    url: "{{ route('users.store') }}",
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: (data) => {
-                        $('#dataForm').trigger("reset");
-                        $('#ajaxModal').modal('hide');
-                        $('#btnSave').html('Save Changes');
+                    type: "POST",
+                    url: "{{ route('employees.store') }}",
+                    data: $("#dataForm").serialize(),
+                    dataType: 'json',
+                    success: function(data) {
+                        $("#dataForm").trigger("reset");
+                        $("#ajaxModal").modal('hide');
                         table.draw();
                     },
                     error: function(data) {
-                        console.log('Error:', data);
-                        $('#btnSave').html('Save Changes');
+                        console.log('Error', data);
+                        $("#btnSave").html('Simpan');
                     }
                 });
             });
-
-            // $("#btnSave").click(function(e) {
-            //     e.preventDefault();
-            //     $(this).html('Save');
-
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "{{ route('users.store') }}",
-            //         data: $("#dataForm").serialize(),
-            //         dataType: 'json',
-            //         success: function(data) {
-            //             $("#dataForm").trigger("reset");
-            //             $("#ajaxModal").modal('hide');
-            //             table.draw();
-            //         },
-            //         error: function(data) {
-            //             console.log('Error', data);
-            //             $("#btnSave").html('Simpan');
-            //         }
-            //     });
-            // });
 
             $('body').on('click', '.deleteData', function() {
                 var data_id = $(this).data("id");
                 if (confirm("Apakah Anda yakin?")) {
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('users.store') }}" + "/" + data_id,
+                        url: "{{ route('employees.store') }}" + "/" + data_id,
                         success: function(data) {
                             table.draw();
                         },
@@ -283,42 +195,16 @@ img {
 
             $('body').on('click', '.editData', function() {
                 var data_id = $(this).data("id");
-                $.get("{{ route('users.index') }}" + "/" + data_id + "/edit", function(data) {
+                $.get("{{ route('employees.index') }}" + "/" + data_id + "/edit", function(data) {
                     $("#modalHeading").html("Ubah Data");
                     $("#ajaxModal").modal('show');
                     $("#data_id").val(data.id);
                     $("#name").val(data.name);
                     $("#email").val(data.email);
-                    $("#nik").val(data.nik);
-                    $("#phone").val(data.phone);
-                    $("#address").val(data.address);
                     $("#status").val(data.status);
-                    $("#role").val(data.role);
-                    $('#modal-preview').attr('src', 'default.png');
-                    $('#modal-preview').attr('alt', 'No image available');
-                    if (data.image) {
-                        $('#modal-preview').attr('src', 'storage/driver/' + data.image);
-                        // $('#hidden_image').attr('src', 'storage/driver/' + data.image);
-                        $('#hidden_image').val(data.image);
-                    }
                 });
             });
-
-
         });
-
-        function readURL(input, id) {
-            id = id || '#modal-preview';
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $(id).attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-                $('#modal-preview').removeClass('hidden');
-                $('#start').hide();
-            }
-        }
     </script>
 
 @stop
