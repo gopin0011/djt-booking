@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('number');
             $table->string('type')->nullable();
             $table->string('note')->nullable();
+            $table->string('image')->nullable();
             $table->string('status');
             $table->timestamps();
         });

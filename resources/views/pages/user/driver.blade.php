@@ -25,22 +25,16 @@
 
                         <div class="form-group">
                             <div class="d-flex justify-content-center">
-                                <img id="modal-preview" src="default.png" alt="Preview"
-                                class="form-group hidden" width="150" height="150">
-
+                                <img id="modal-preview" src="default.png" alt="Preview" class="form-group hidden"
+                                    width="150" height="150">
                             </div>
                             <div class="custom-file">
                                 <input id="image" class="custom-file-input" type="file" name="image"
                                     accept="image/*" onchange="readURL(this);">
                                 <label class="custom-file-label" for="exampleInputFile">Pilih foto</label>
                             </div>
-                            {{-- <input id="image" class="float-left" type="file" name="image" accept="image/*"
-                                onchange="readURL(this);"> --}}
                             <input type="hidden" name="hidden_image" id="hidden_image">
-
-
                         </div>
-
                         <div class="form-group">
                             <input id="name" name="name" type="text" class="form-control"
                                 placeholder="Nama driver" required>
@@ -99,13 +93,14 @@
 @stop
 
 @section('css')
-<style>
-img {
-    width: 100px; /* You can set the dimensions to whatever you want */
-    height: 100px;
-    object-fit: cover;
-}
-</style>
+    <style>
+        img {
+            width: 100px;
+            /* You can set the dimensions to whatever you want */
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
@@ -220,7 +215,7 @@ img {
             $('body').on('submit', '#dataForm', function(e) {
                 e.preventDefault();
                 var actionType = $('#btnSave').val();
-                $('#btnSave').html('Sending..');
+                $('#btnSave').html('Simpan');
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
@@ -232,36 +227,15 @@ img {
                     success: (data) => {
                         $('#dataForm').trigger("reset");
                         $('#ajaxModal').modal('hide');
-                        $('#btnSave').html('Save Changes');
+                        $('#btnSave').html('Simpan');
                         table.draw();
                     },
                     error: function(data) {
                         console.log('Error:', data);
-                        $('#btnSave').html('Save Changes');
+                        $('#btnSave').html('Simpan');
                     }
                 });
             });
-
-            // $("#btnSave").click(function(e) {
-            //     e.preventDefault();
-            //     $(this).html('Save');
-
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "{{ route('users.store') }}",
-            //         data: $("#dataForm").serialize(),
-            //         dataType: 'json',
-            //         success: function(data) {
-            //             $("#dataForm").trigger("reset");
-            //             $("#ajaxModal").modal('hide');
-            //             table.draw();
-            //         },
-            //         error: function(data) {
-            //             console.log('Error', data);
-            //             $("#btnSave").html('Simpan');
-            //         }
-            //     });
-            // });
 
             $('body').on('click', '.deleteData', function() {
                 var data_id = $(this).data("id");

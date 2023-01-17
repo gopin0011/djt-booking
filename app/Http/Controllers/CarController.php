@@ -6,6 +6,7 @@ use App\Models\BookingCar;
 use App\Models\Car;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\File;
 
 class CarController extends Controller
 {
@@ -18,6 +19,16 @@ class CarController extends Controller
         if($request->ajax()){
             $allData = DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('image', function ($row) {
+                if ($row->image) {
+                    $data = $row->image;
+                    $x = asset('storage/car/' . $data);
+                    $show = '<a href="' . $x . '" target="_blank"><div><img src="' . $x . '" alt=""></div></a>';
+                } else {
+                    $show = '<div><img src="' . 'default.png' . '" alt=""></div>';
+                }
+                return $show;
+            })
             ->addColumn('action', function($row){
                 $trans = BookingCar::where('car',$row->id)->get();
                 $count = count($trans);
@@ -38,7 +49,7 @@ class CarController extends Controller
                 }
                 return $status;
             })
-            ->rawColumns(['action','status'])
+            ->rawColumns(['image','action','status'])
             ->make(true);
             return $allData;
         }
@@ -52,19 +63,39 @@ class CarController extends Controller
 
     public function store(Request $request){
 
-        Car::updateOrCreate(
-            ['id'=>$request->data_id],
-            ['number'=>$request->number,
+        $request->validate([
+            'image' => 'image|file|max:2048',
+            'number'  => 'required',
+        ]);
+
+        $dataId = $request->data_id;
+
+        $details = [
+            'number'=>$request->number,
             'type'=>$request->type,
             'note'=>$request->note,
             'status'=>$request->status
-            ]
-        );
-        return response()->json(['success'=>'Data telah berhasil disimpan']);
+        ];
+
+        if ($files = $request->file('image')) {
+            $file = 'storage/car/' . $request->hidden_image;
+            File::delete(($file));
+
+            $destinationPath = 'storage/car/';
+            $profileImage = now()->format('ymdhis') . '.' . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
+            $details['image'] = "$profileImage";
+        }
+
+        $dataUser   =   Car::updateOrCreate(['id' => $dataId], $details);
+        return response()->json($dataUser);
     }
 
     public function destroy($id){
-        Car::find($id)->delete();
-        return response()->json(['success'=>'Data telah berhasil dihapus']);
+        $data = Car::find($id);
+        $file = 'storage/car/' . $data->image;
+        File::delete(($file));
+        $data->delete();
+        return response()->json(['success' => 'Data telah berhasil dihapus']);
     }
 }

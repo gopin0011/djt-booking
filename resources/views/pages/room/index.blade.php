@@ -20,17 +20,27 @@
                     <h4 class="modal-title" id="modalHeading"></h4>
                 </div>
                 <div class="modal-body">
-                    <form id="dataForm" name="dataForm" class="form-horizontal">
+                    <form id="dataForm" name="dataForm" class="form-horizontal" enctype="multipart/form-data">
                         <input type="hidden" name="data_id" id="data_id">
                         <div class="form-group">
-                            Ruangan: <br>
-                            <input type="text" class="form-control" id="name" name="name"
-                                placeholder="Masukkan nama ruangan" value="" required>
+                            <div class="d-flex justify-content-center">
+                                <img id="modal-preview" src="default.png" alt="Preview" class="form-group hidden"
+                                    width="150" height="150">
+                            </div>
+                            <div class="custom-file">
+                                <input id="image" class="custom-file-input" type="file" name="image"
+                                    accept="image/*" onchange="readURL(this);">
+                                <label class="custom-file-label" for="exampleInputFile">Pilih foto</label>
+                            </div>
+                            <input type="hidden" name="hidden_image" id="hidden_image">
                         </div>
                         <div class="form-group">
-                            Keterangan: <br>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Nama ruangan" value="" required>
+                        </div>
+                        <div class="form-group">
                             <input type="text" class="form-control" id="note" name="note"
-                                placeholder="Keterangan" value="" required>
+                                placeholder="Spesifikasi ruangan" value="" required>
                         </div>
                         <div class="form-group">
                             Status: <br>
@@ -54,6 +64,7 @@
         <thead>
             <tr>
                 <th width="50px">#</th>
+                <th>Foto Ruangan</th>
                 <th>Ruangan</th>
                 <th>Keterangan</th>
                 <th>Status</th>
@@ -65,6 +76,14 @@
 @stop
 
 @section('css')
+    <style>
+        img {
+            width: 200px;
+            /* You can set the dimensions to whatever you want */
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
@@ -122,11 +141,16 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [1, 'asc']
+                    [2, 'asc']
                 ],
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'image',
+                        name: 'image',
+                        orderable: false
                     },
                     {
                         data: 'name',
@@ -134,7 +158,8 @@
                     },
                     {
                         data: 'note',
-                        name: 'note'
+                        name: 'note',
+                        orderable: false
                     },
                     {
                         data: 'status',
@@ -142,7 +167,8 @@
                     },
                     {
                         data: 'action',
-                        name: 'action'
+                        name: 'action',
+                        orderable: false
                     },
                 ]
             });
@@ -152,25 +178,30 @@
                 $("#dataForm").trigger("reset");
                 $("#modalHeading").html("Tambah Data");
                 $("#ajaxModal").modal('show');
+                $('#modal-preview').attr('src', 'default.png');
             });
 
-            $("#btnSave").click(function(e) {
+            $('body').on('submit', '#dataForm', function(e) {
                 e.preventDefault();
-                $(this).html('Save');
-
+                var actionType = $('#btnSave').val();
+                $('#btnSave').html('Simpan');
+                var formData = new FormData(this);
                 $.ajax({
-                    type: "POST",
+                    type: 'POST',
                     url: "{{ route('rooms.store') }}",
-                    data: $("#dataForm").serialize(),
-                    dataType: 'json',
-                    success: function(data) {
-                        $("#dataForm").trigger("reset");
-                        $("#ajaxModal").modal('hide');
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        $('#dataForm').trigger("reset");
+                        $('#ajaxModal').modal('hide');
+                        $('#btnSave').html('Simpan');
                         table.draw();
                     },
                     error: function(data) {
-                        console.log('Error', data);
-                        $("#btnSave").html('Simpan');
+                        console.log('Error:', data);
+                        $('#btnSave').html('Simpan');
                     }
                 });
             });
@@ -202,9 +233,28 @@
                     $("#name").val(data.name);
                     $("#note").val(data.note);
                     $("#status").val(data.status);
+                    $('#modal-preview').attr('src', 'default.png');
+                    $('#modal-preview').attr('alt', 'No image available');
+                    if (data.image) {
+                        $('#modal-preview').attr('src', 'storage/room/' + data.image);
+                        $('#hidden_image').val(data.image);
+                    }
                 });
             });
         });
+
+        function readURL(input, id) {
+            id = id || '#modal-preview';
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(id).attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+                $('#modal-preview').removeClass('hidden');
+                $('#start').hide();
+            }
+        }
     </script>
 
 @stop
