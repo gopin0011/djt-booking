@@ -18,6 +18,7 @@
             <tr>
                 {{-- <th width="50px">#</th> --}}
                 <th>ID Booking</th>
+                <th>Foto</th>
                 <th>Ruangan</th>
                 <th>Tujuan</th>
                 <th>Waktu</th>
@@ -31,6 +32,13 @@
 @stop
 
 @section('css')
+    <style>
+        .tongji {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
@@ -90,6 +98,10 @@
                     {
                         data: 'booking_id',
                         name: 'booking_id'
+                    },
+                    {
+                        data: 'image',
+                        name: 'image'
                     },
                     {
                         data: 'room',

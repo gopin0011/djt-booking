@@ -80,12 +80,12 @@ class UserController extends Controller
             $allData = DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image', function ($row) {
-                    if($row->image){
+                    if ($row->image) {
                         $data = $row->image;
-                        $x = asset('storage/driver/'.$data);
-                        $show = '<a href="'.$x.'" target="_blank"><div><img src="'.$x.'" alt=""></div></a>';
-                    }else{
-                        $show = '<div><img src="'.'default.png'.'" alt=""></div>';
+                        $x = asset('storage/driver/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img src="' . 'default.png' . '" alt=""></div>';
                     }
                     return $show;
                 })
@@ -107,7 +107,7 @@ class UserController extends Controller
                     }
                     return $btn;
                 })
-                ->rawColumns(['image','status', 'action'])
+                ->rawColumns(['image', 'status', 'action'])
                 ->make(true);
             return $allData;
         }
@@ -129,8 +129,7 @@ class UserController extends Controller
 
         $dataId = $request->data_id;
 
-        if($dataId=='')
-        {
+        if ($dataId == '') {
             $details = [
                 'password' => bcrypt('12345678'),
                 'name' => $request->name,
@@ -141,7 +140,7 @@ class UserController extends Controller
                 'role' => $request->role,
                 'status' => $request->status,
             ];
-        }else{
+        } else {
             $details = [
                 'name' => $request->name,
                 'email' => $request->email,
@@ -153,12 +152,12 @@ class UserController extends Controller
             ];
         }
 
-        if($files = $request->file('image')){
+        if ($files = $request->file('image')) {
             $file = 'storage/driver/' . $request->hidden_image;
             File::delete(($file));
 
             $destinationPath = 'storage/driver/';
-            $profileImage = now()->format('ymdhis') .'.'. $files->getClientOriginalExtension();
+            $profileImage = now()->format('ymdhis') . '.' . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profileImage);
             $details['image'] = "$profileImage";
         }

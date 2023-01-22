@@ -16,7 +16,8 @@ class BookingRoomController extends Controller
     public function index()
     {
         $rooms = Room::where('status', '0')->get();
-        return view('pages.booking.room', compact('rooms'));
+        $carousels = Room::where([['status', '0'], ['id', '<>', '1']])->get();
+        return view('pages.booking.room', compact('rooms', 'carousels'));
     }
 
     public function showData(Request $request)
@@ -29,6 +30,17 @@ class BookingRoomController extends Controller
                     $time = $row->starttime . '-' . $row->endtime;
                     return $time;
                 })
+                ->addColumn('image', function ($row) {
+                    $room = Room::find($row->room);
+                    if ($room->image) {
+                        $data = $room->image;
+                        $x = asset('storage/room/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img class="tongji" src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img class="tongji" src="' . 'default.png' . '" alt=""></div>';
+                    }
+                    return $show;
+                })
                 ->addColumn('room', function ($row) {
                     $room = Room::find($row->room);
                     return $room->name;
@@ -38,14 +50,13 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
-                    if($row->status == '0')
-                    {
+                    $data = DetailBookingRoom::where('booking_id', $row->id)->get();
+                    if ($row->status == '0') {
                         $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Add" class="add btn btn-primary btn-sm addQty"><i class="fa fa-add"></i></a>';
-                    }else{
+                    } else {
                         $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Show" class="show btn btn-success btn-sm showQty"><i class="fa fa-magnifying-glass"></i></a>';
                     }
-                    $qty = $btn .' '. count($data);
+                    $qty = $btn . ' ' . count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
@@ -66,22 +77,21 @@ class BookingRoomController extends Controller
                     } else if ($row->status == 2) {
                         $btn = "Ditolak";
                     } else {
-                        if($row->note == ''){
+                        if ($row->note == '') {
                             $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Review" class="review btn btn-warning btn-sm reviewData">Beri Ulasan</a>';
-                        }else{
+                        } else {
                             $btn = "Selesai";
                         }
                     }
 
-                    if($row->status == '0')
-                    {
+                    if ($row->status == '0') {
                         $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editData"><i class="fa fa-edit"></i></a>';
                         $btn .= '&nbsp;&nbsp;';
                         $btn .= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
                     }
                     return $btn;
                 })
-                ->rawColumns(['time', 'pic', 'qty', 'status', 'action'])
+                ->rawColumns(['image', 'time', 'pic', 'qty', 'status', 'action'])
                 ->make(true);
             return $allData;
         }
@@ -103,6 +113,17 @@ class BookingRoomController extends Controller
                     $time = $row->starttime . '-' . $row->endtime;
                     return $time;
                 })
+                ->addColumn('image', function ($row) {
+                    $room = Room::find($row->room);
+                    if ($room->image) {
+                        $data = $room->image;
+                        $x = asset('storage/room/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img class="tongji" src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img class="tongji" src="' . 'default.png' . '" alt=""></div>';
+                    }
+                    return $show;
+                })
                 ->addColumn('room', function ($row) {
                     $room = Room::find($row->room);
                     return $room->name;
@@ -112,10 +133,10 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    $data = DetailBookingRoom::where('booking_id', $row->id)->get();
                     $qty = count($data);
                     $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Show" class="show btn btn-success btn-sm showQty"><i class="fa fa-magnifying-glass"></i></a>';
-                    $qty = $btn .' '. count($data);
+                    $qty = $btn . ' ' . count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
@@ -130,7 +151,7 @@ class BookingRoomController extends Controller
                     }
                     return $status;
                 })
-                ->rawColumns(['time', 'pic', 'qty', 'status'])
+                ->rawColumns(['image', 'time', 'pic', 'qty', 'status'])
                 ->make(true);
             return $allData;
         }
@@ -161,10 +182,10 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    $data = DetailBookingRoom::where('booking_id', $row->id)->get();
                     $qty = count($data);
                     $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Show" class="show btn btn-success btn-sm showQty"><i class="fa fa-magnifying-glass"></i></a>';
-                    $qty = $btn .' '. count($data);
+                    $qty = $btn . ' ' . count($data);
                     return $qty;
                 })
                 ->addColumn('status', function ($row) {
@@ -198,7 +219,7 @@ class BookingRoomController extends Controller
 
     public function showDataAll(Request $request)
     {
-        $data = BookingRoom::where([['status','<>','2'],['date','>=',date(now()->format('Y-m-d'))],['starttime','>=',date(now()->format('H:i:s'))]])->get();
+        $data = BookingRoom::where([['status', '<>', '2'], ['date', '>=', date(now()->format('Y-m-d'))], ['starttime', '>=', date(now()->format('H:i:s'))]])->get();
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
@@ -215,7 +236,7 @@ class BookingRoomController extends Controller
                     return $pic->name;
                 })
                 ->addColumn('qty', function ($row) {
-                    $data = DetailBookingRoom::where('booking_id',$row->id)->get();
+                    $data = DetailBookingRoom::where('booking_id', $row->id)->get();
                     $qty = count($data);
                     return $qty;
                 })

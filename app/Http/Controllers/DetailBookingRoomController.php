@@ -11,7 +11,6 @@ class DetailBookingRoomController extends Controller
 {
     public function index()
     {
-
     }
 
     public function show($id)
@@ -26,15 +25,15 @@ class DetailBookingRoomController extends Controller
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('user', function($row){
-                    $data = Employee::where('id',$row->user)->get()[0];
+                ->addColumn('user', function ($row) {
+                    $data = Employee::where('id', $row->user)->get()[0];
                     return $data->name;
                 })
-                ->addColumn('email', function($row){
-                    $data = Employee::where('id',$row->user)->get()[0];
+                ->addColumn('email', function ($row) {
+                    $data = Employee::where('id', $row->user)->get()[0];
                     return $data->email;
                 })
-                ->rawColumns(['user','email'])
+                ->rawColumns(['user', 'email'])
                 ->make(true);
             return $allData;
         }
@@ -65,19 +64,19 @@ class DetailBookingRoomController extends Controller
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('user', function($row){
-                    $data = Employee::where('id',$row->user)->get()[0];
+                ->addColumn('user', function ($row) {
+                    $data = Employee::where('id', $row->user)->get()[0];
                     return $data->name;
                 })
-                ->addColumn('email', function($row){
-                    $data = Employee::where('id',$row->user)->get()[0];
+                ->addColumn('email', function ($row) {
+                    $data = Employee::where('id', $row->user)->get()[0];
                     return $data->email;
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteData"><i class="fa fa-trash"></i></a>';
                     return $btn;
                 })
-                ->rawColumns(['user','email','action'])
+                ->rawColumns(['user', 'email', 'action'])
                 ->make(true);
             return $allData;
         }

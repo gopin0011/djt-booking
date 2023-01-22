@@ -28,6 +28,28 @@ class BookingCarController extends Controller
                     $data = Car::find($row->car);
                     return $data->number;
                 })
+                ->addColumn('image', function ($row) {
+                    $car = Car::find($row->car);
+                    if ($car->image) {
+                        $data = $car->image;
+                        $x = asset('storage/car/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img class="tongji" src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img class="tongji" src="' . 'default.png' . '" alt=""></div>';
+                    }
+                    return $show;
+                })
+                ->addColumn('photo', function ($row) {
+                    $driver = User::find($row->driver);
+                    if ($driver->image) {
+                        $data = $driver->image;
+                        $x = asset('storage/driver/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img class="cang" src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img class="cang" src="' . 'default.png' . '" alt=""></div>';
+                    }
+                    return $show;
+                })
                 ->addColumn('driver', function ($row) {
                     $data = User::find($row->driver);
                     if ($row->driver == '') {
@@ -80,7 +102,7 @@ class BookingCarController extends Controller
                     }
                     return $rating;
                 })
-                ->rawColumns(['car', 'driver', 'user', 'status', 'action', 'rating'])
+                ->rawColumns(['photo', 'car', 'image', 'driver', 'user', 'status', 'action', 'rating'])
                 ->make(true);
             return $allData;
         }
@@ -156,6 +178,28 @@ class BookingCarController extends Controller
         if ($request->ajax()) {
             $allData = DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('image', function ($row) {
+                    $car = Car::find($row->car);
+                    if ($car->image) {
+                        $data = $car->image;
+                        $x = asset('storage/car/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img class="tongji" src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img class="tongji" src="' . 'default.png' . '" alt=""></div>';
+                    }
+                    return $show;
+                })
+                ->addColumn('photo', function ($row) {
+                    $driver = User::find($row->driver);
+                    if ($driver->image) {
+                        $data = $driver->image;
+                        $x = asset('storage/driver/' . $data);
+                        $show = '<a href="' . $x . '" target="_blank"><div><img class="cang" src="' . $x . '" alt=""></div></a>';
+                    } else {
+                        $show = '<div><img class="cang" src="' . 'default.png' . '" alt=""></div>';
+                    }
+                    return $show;
+                })
                 ->addColumn('car', function ($row) {
                     $data = Car::find($row->car);
                     return $data->number;
@@ -185,7 +229,7 @@ class BookingCarController extends Controller
                     }
                     return $status;
                 })
-                ->rawColumns(['car', 'driver', 'user', 'status'])
+                ->rawColumns(['image', 'photo', 'car', 'driver', 'user', 'status'])
                 ->make(true);
             return $allData;
         }
@@ -240,13 +284,11 @@ class BookingCarController extends Controller
     {
         $data = BookingCar::find($request->data_ids);
 
-        if($request->rating <= 1)
-        {
+        if ($request->rating <= 1) {
             $rating = 1;
-        }else if ($request->rating >= 5)
-        {
+        } else if ($request->rating >= 5) {
             $rating = 5;
-        }else{
+        } else {
             $rating = $request->rating;
         }
 

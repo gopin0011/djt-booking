@@ -119,8 +119,9 @@
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
                                             <label for="note">Rating</label><br>
-                                            <input type="number" class="form-control" value="1" name="rating" placeholder="Rating untuk driver (1-5)"
-                                            id="rating" max="5" min="1">
+                                            <input type="number" class="form-control" value="1" name="rating"
+                                                placeholder="Rating untuk driver (1-5)" id="rating" max="5"
+                                                min="1">
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +151,9 @@
                 {{-- <th width="50px">#</th> --}}
                 <th width="60px">Status</th>
                 <th>Kendaraan</th>
+                <th>Foto Kendaraan</th>
                 <th>Driver</th>
+                <th>Foto Driver</th>
                 <th>Kegiatan</th>
                 <th>Tujuan</th>
                 <th>Tanggal</th>
@@ -168,6 +171,20 @@
 @stop
 
 @section('css')
+    <style>
+        .tongji {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+        }
+    </style>
+    <style>
+        .cang {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
@@ -217,7 +234,7 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [9, 'asc']
+                    [11, 'asc']
                 ],
                 columns: [
                     // {
@@ -233,8 +250,16 @@
                         name: 'car'
                     },
                     {
+                        data: 'image',
+                        name: 'image'
+                    },
+                    {
                         data: 'driver',
                         name: 'driver'
+                    },
+                    {
+                        data: 'photo',
+                        name: 'photo'
                     },
                     {
                         data: 'purpose',

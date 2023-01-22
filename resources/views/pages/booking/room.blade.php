@@ -33,7 +33,9 @@
                                             <select type="text" class="form-control" id="room" name="room"
                                                 value="">
                                                 @foreach ($rooms as $data)
-                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                    <option value="{{ $data->id }}">
+                                                        {{ $data->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -133,11 +135,42 @@
 @stop
 
 @section('content')
+    <div id="carouselExampleCaptions" class="carousel slide mb-3" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+            @foreach ($data as $value)
+                <li data-target=".carouselExampleCaptions" data-slide-to="{{ $loop->index }}"
+                    class="{{ $loop->first ? 'active' : '' }}"></li>
+            @endforeach
+        </ol>
+        <div class="carousel-inner">
+            @foreach ($carousels as $value)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <img src="{{ is_null($value->image) ? asset('default.png') : asset('storage/room/' . $value->image) }}"
+                        class="d-block w-100" alt="..." height="450">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ $value->name }}</h5>
+                        <p>{{ $value->note }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
     <table class="table table-striped data-table display nowrap" width="100%">
         <thead>
             <tr>
                 {{-- <th width="50px">#</th> --}}
                 <th width="60px">Status</th>
+                <th>Foto</th>
                 <th>Ruangan</th>
                 <th>Tujuan</th>
                 <th>Tanggal</th>
@@ -154,6 +187,13 @@
 @stop
 
 @section('css')
+    <style>
+        .tongji {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
@@ -203,7 +243,7 @@
                     targets: 0,
                 }, ],
                 order: [
-                    [7, 'asc']
+                    [8, 'asc']
                 ],
                 columns: [
                     // {
@@ -213,6 +253,10 @@
                     {
                         data: 'action',
                         name: 'action'
+                    },
+                    {
+                        data: 'image',
+                        name: 'image'
                     },
                     {
                         data: 'room',
@@ -355,7 +399,8 @@
 
             $('body').on('click', '.addQty', function() {
                 var data_id = $(this).data("id");
-                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id + '/detail';
+                window.location.href = '{{ route('detailbookingroom.index') }}' + '/' + data_id +
+                    '/detail';
             });
 
             $('body').on('click', '.showQty', function() {

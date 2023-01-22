@@ -18,7 +18,9 @@
             <tr>
                 <th>ID Booking</th>
                 <th>Kendaraan</th>
+                <th>Foto Kendaraan</th>
                 <th>Driver</th>
+                <th>Foto Driver</th>
                 <th>Kegiatan</th>
                 <th>Tujuan</th>
                 <th>Waktu</th>
@@ -32,6 +34,20 @@
 @stop
 
 @section('css')
+    <style>
+        .tongji {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+        }
+    </style>
+    <style>
+        .cang {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
@@ -83,8 +99,7 @@
                 order: [
                     [0, 'asc']
                 ],
-                columns: [
-                    {
+                columns: [{
                         data: 'booking_id',
                         name: 'booking_id'
                     },
@@ -93,8 +108,16 @@
                         name: 'car'
                     },
                     {
+                        data: 'image',
+                        name: 'image'
+                    },
+                    {
                         data: 'driver',
                         name: 'driver'
+                    },
+                    {
+                        data: 'photo',
+                        name: 'photo'
                     },
                     {
                         data: 'purpose',

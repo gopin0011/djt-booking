@@ -250,7 +250,7 @@
                     $('#modal-preview').attr('src', 'default.png');
                     $('#modal-preview').attr('alt', 'No image available');
                     if (data.image) {
-                        $('#modal-preview').attr('src', 'storage/room/' + data.image);
+                        $('#modal-preview').attr('src', 'storage/car/' + data.image);
                         $('#hidden_image').val(data.image);
                     }
                 });
