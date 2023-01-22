@@ -13,20 +13,20 @@
 @stop
 
 @section('content')
-<table class="table table-striped data-table display nowrap" width="100%">
-    <thead>
-        <tr>
-            {{-- <th>ID Booking</th> --}}
-            <th>Ruangan</th>
-            <th>Tujuan</th>
-            <th>Tanggal</th>
-            <th>Waktu</th>
-            <th>PIC</th>
-            {{-- <th>Jumlah</th> --}}
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <table class="table table-striped data-table display nowrap" width="100%">
+        <thead>
+            <tr>
+                {{-- <th>ID Booking</th> --}}
+                <th>Ruangan</th>
+                <th>Kegiatan</th>
+                <th>Tanggal</th>
+                <th>Waktu</th>
+                <th>PIC</th>
+                {{-- <th>Jumlah</th> --}}
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 @stop
 
 @section('css')

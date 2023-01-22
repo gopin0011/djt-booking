@@ -100,7 +100,7 @@
                 {{-- <th width="50px">#</th> --}}
                 <th width="60px"></th>
                 <th>Ruangan</th>
-                <th>Tujuan</th>
+                <th>Kegiatan</th>
                 <th>Tanggal</th>
                 <th>Waktu</th>
                 <th>PIC</th>

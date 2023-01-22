@@ -20,7 +20,7 @@
                 <th>ID Booking</th>
                 <th>Foto</th>
                 <th>Ruangan</th>
-                <th>Tujuan</th>
+                <th>Kegiatan</th>
                 <th>Waktu</th>
                 <th>PIC</th>
                 <th>Jumlah</th>

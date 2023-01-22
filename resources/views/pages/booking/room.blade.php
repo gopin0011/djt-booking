@@ -66,7 +66,7 @@
 
                                     <div class="input-group mb-3">
                                         <div class="col-sm-12">
-                                            <label for="number">Tujuan Meeting</label><br>
+                                            <label for="number">Kegiatan Meeting</label><br>
                                             <textarea rows="2" class="form-control" name="purpose" id="purpose"></textarea>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                 <th width="60px">Status</th>
                 <th>Foto</th>
                 <th>Ruangan</th>
-                <th>Tujuan</th>
+                <th>Kegiatan</th>
                 <th>Tanggal</th>
                 <th>Waktu</th>
                 <th>PIC</th>
