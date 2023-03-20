@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('destination')->nullable();
             $table->string('purpose')->nullable();
             $table->string('timedepature')->nullable();
+            $table->string('timearrive')->nullable();
             $table->string('datedepature')->nullable();
             $table->string('user')->nullable();
             $table->integer('qty')->nullable();

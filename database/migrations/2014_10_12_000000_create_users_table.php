@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('role')->nullable();
             $table->string('device_token')->nullable();
             $table->string('status');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RoomBooking;
 use App\Models\BookingRoom;
 use App\Models\DetailBookingRoom;
 use App\Models\Room;
@@ -10,6 +11,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class BookingRoomController extends Controller
 {
@@ -279,11 +282,11 @@ class BookingRoomController extends Controller
             if (count($cek) != 0) {
                 return response()->json(['failed' => 'Ruangan tidak tersedia di waktu tersebut']);
             } else {
-                // error_log($request->data_id);
+                $bookingId = 'BR-' . date(now()->format('YmdHis'));
                 BookingRoom::updateOrCreate(
                     ['id' => $request->data_id],
                     [
-                        'booking_id' => 'BR-' . date(now()->format('YmdHis')),
+                        'booking_id' => $bookingId,
                         'room' => $request->room,
                         'purpose' => $request->purpose,
                         'starttime' => $request->starttime,
@@ -295,7 +298,22 @@ class BookingRoomController extends Controller
                         'status' => '0'
                     ]
                 );
+
+                $targetEmail = User::where('role', '1')->orWhere('role', '2')->get('email');
+                $data = DB::table('booking_rooms')
+                    ->join('users', 'users.id', '=', 'booking_rooms.pic')
+                    ->join('rooms', 'rooms.id', '=', 'booking_rooms.room')
+                    ->where('booking_rooms.booking_id', $bookingId)
+                    ->select('rooms.name as room', 'booking_rooms.purpose as purpose', 'booking_rooms.starttime as starttime', 'booking_rooms.endtime as endtime', 'booking_rooms.date as date', 'users.name as user',)
+                    ->get()[0];
+                $url = env('APP_URL') . '/booking-room/approve';
+
+                Mail::to($targetEmail)->send(
+                    new RoomBooking($data, $url)
+                );
             }
+
+            //BUAT NOTIFIKASI VIA EMAIL KE GA
         } else {
             $cek = BookingRoom::where([['room', $request->room], ['date', $request->date], ['starttime', '>=', $request->starttime], ['starttime', '<=', $request->endtime]])->orWhere([['room', $request->room], ['date', $request->date], ['endtime', '>=', $request->starttime], ['endtime', '<=', $request->endtime]])->orWhere([['room', $request->room], ['date', $request->date], ['starttime', '<=', $request->starttime], ['endtime', '>=', $request->endtime]])->get();
 
@@ -321,6 +339,10 @@ class BookingRoomController extends Controller
                         'status' => $request->status
                     ]
                 );
+            }
+
+            if ($request->status == '1') {
+                //BUAT NOTIFIKASI UNDANGAN MEETING
             }
         }
 

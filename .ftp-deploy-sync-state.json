@@ -1,0 +1,2047 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1674638721608,
+    "data": [
+        {
+            "type": "file",
+            "name": ".DS_Store",
+            "size": 8196,
+            "hash": "468ff6a16732ac61859649393527101480d08c3b9d6460867c5c0146e0c0e598"
+        },
+        {
+            "type": "file",
+            "name": ".editorconfig",
+            "size": 258,
+            "hash": "d9a5756ca5adea55000be0ee4f5af68946e3554c986981b7f8e35e7acaad28fa"
+        },
+        {
+            "type": "file",
+            "name": ".env.example",
+            "size": 1066,
+            "hash": "d2e428d92355b459e367c3977dfe0091e83c6dd99c674f2f6054f42671ae9941"
+        },
+        {
+            "type": "file",
+            "name": ".htaccess",
+            "size": 86,
+            "hash": "639bcd09c770e1309f116d8c02daf39a29b9f527e8df036d96c0e5d052a24253"
+        },
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 4134,
+            "hash": "33c770ca1f6af836bf14c499746d19abd2c4cf1a8a58399e8723e10a1285dc13"
+        },
+        {
+            "type": "folder",
+            "name": "app"
+        },
+        {
+            "type": "file",
+            "name": "artisan",
+            "size": 1690,
+            "hash": "47b8450a6ee9f1408991147cdfa3e6b45161a40a1bb5e8b4bac10e4a5a8d7574"
+        },
+        {
+            "type": "folder",
+            "name": "bootstrap"
+        },
+        {
+            "type": "file",
+            "name": "composer.json",
+            "size": 1936,
+            "hash": "e94b48ec96314fcc578a129123112e4d93ce79f63f42aa18dfd423d33460b4d1"
+        },
+        {
+            "type": "file",
+            "name": "composer.lock",
+            "size": 313484,
+            "hash": "fb951148ed7a73277dc02b6a9ecf7a9136f81aaa504b2f3fd6711ae2285b4fbc"
+        },
+        {
+            "type": "folder",
+            "name": "config"
+        },
+        {
+            "type": "folder",
+            "name": "database"
+        },
+        {
+            "type": "file",
+            "name": "index.php",
+            "size": 569,
+            "hash": "5a65162b4e88beb9b80ddbe3aef7da1dc282aa0d3b30f5a167810619b1700080"
+        },
+        {
+            "type": "folder",
+            "name": "lang"
+        },
+        {
+            "type": "file",
+            "name": "package-lock.json",
+            "size": 415497,
+            "hash": "0ad5fd6218b4d385869079765db1553864e2d1c08db1c975b445ef2266667bbf"
+        },
+        {
+            "type": "file",
+            "name": "package.json",
+            "size": 761,
+            "hash": "875e05ca61666e1c8fd1991c669b0afcd84d37dba0c8d50e4f718f12621687d0"
+        },
+        {
+            "type": "file",
+            "name": "phpunit.xml",
+            "size": 1175,
+            "hash": "91a7a74c9f79390e156109fe9e3fe56214a5f0811719ff66522774a41d09ef1c"
+        },
+        {
+            "type": "folder",
+            "name": "public"
+        },
+        {
+            "type": "folder",
+            "name": "resources"
+        },
+        {
+            "type": "folder",
+            "name": "routes"
+        },
+        {
+            "type": "folder",
+            "name": "storage"
+        },
+        {
+            "type": "folder",
+            "name": "tests"
+        },
+        {
+            "type": "file",
+            "name": "vite.config.js",
+            "size": 312,
+            "hash": "83642a6e78507ff0c79d66e1e4ac7657e2982f46bcd676024b7854644e3a5bb2"
+        },
+        {
+            "type": "file",
+            "name": "webpack.mix.js",
+            "size": 613,
+            "hash": "d98aa95c6cfd6485a35d9ec8050217eade3d4b0bdb1950691ffbabc4f72c8bf8"
+        },
+        {
+            "type": "folder",
+            "name": "app/Console"
+        },
+        {
+            "type": "folder",
+            "name": "app/Exceptions"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http"
+        },
+        {
+            "type": "folder",
+            "name": "app/Mail"
+        },
+        {
+            "type": "folder",
+            "name": "app/Models"
+        },
+        {
+            "type": "folder",
+            "name": "app/Providers"
+        },
+        {
+            "type": "folder",
+            "name": "app/Rules"
+        },
+        {
+            "type": "file",
+            "name": "bootstrap/app.php",
+            "size": 1620,
+            "hash": "e346d041676171a900406bba87f0658b6d3aebef79bed7e7081213e7ac3c7951"
+        },
+        {
+            "type": "folder",
+            "name": "bootstrap/cache"
+        },
+        {
+            "type": "file",
+            "name": "config/adminlte.php",
+            "size": 20221,
+            "hash": "bc11c1e74b1205c50c4872173875bafc86d335bcd885f7f1edc01b998a7235ab"
+        },
+        {
+            "type": "file",
+            "name": "config/app.php",
+            "size": 7849,
+            "hash": "09897c38c585e15e581a64095611985829f034ccf315184abd377bdd40b18fa6"
+        },
+        {
+            "type": "file",
+            "name": "config/auth.php",
+            "size": 3665,
+            "hash": "a3dfe4c1a50802bc16ecdb2ab782bfb085c55d159920a381a8d42bddf21800b0"
+        },
+        {
+            "type": "file",
+            "name": "config/broadcasting.php",
+            "size": 2095,
+            "hash": "868f0713341aecfd56910d34613fd794d6e4a3af3a1fa14267a2448c6e159385"
+        },
+        {
+            "type": "file",
+            "name": "config/cache.php",
+            "size": 3274,
+            "hash": "fb22be3f6316535e4308ffecf94dfb97f3ac0193e2c0f6eb1bd201d38244c532"
+        },
+        {
+            "type": "file",
+            "name": "config/cors.php",
+            "size": 846,
+            "hash": "7a1b9af42b73b20126219eca484ea7eb02c25a5d179eab1ac00251779d808c49"
+        },
+        {
+            "type": "file",
+            "name": "config/database.php",
+            "size": 5289,
+            "hash": "fb2684d2c3fc7e4359342a49629c08c2293ff2b6a6e55faa8368e81af13374d5"
+        },
+        {
+            "type": "file",
+            "name": "config/datatables.php",
+            "size": 4112,
+            "hash": "06f4f5494c54a951650e11b99c76c5f2f3491de73d484d3164a6a4f3d304df56"
+        },
+        {
+            "type": "file",
+            "name": "config/filesystems.php",
+            "size": 2370,
+            "hash": "16c11e34d3544712e925282c70b6c3864dc4e6ca1dda9edeaaf4154a47c0f1bb"
+        },
+        {
+            "type": "file",
+            "name": "config/hashing.php",
+            "size": 1572,
+            "hash": "6179fbf205a72d2db2f19b4787dc416811013cd05c82fb919b4d012832421ce8"
+        },
+        {
+            "type": "file",
+            "name": "config/logging.php",
+            "size": 3749,
+            "hash": "fe4edbb6f650a804262fabcb115747a3bca492c9c9a9a1bbcc3fd21ec1f4f839"
+        },
+        {
+            "type": "file",
+            "name": "config/mail.php",
+            "size": 3600,
+            "hash": "326f09e38a4b759b09459a01b5ad3451ce42ca64be7578eb7dbdf95741478808"
+        },
+        {
+            "type": "file",
+            "name": "config/queue.php",
+            "size": 2906,
+            "hash": "3def35ab94a40da164762d41ffe0beb1f34fee089a5292e4912cb9f74c2380a6"
+        },
+        {
+            "type": "file",
+            "name": "config/sanctum.php",
+            "size": 2294,
+            "hash": "2d0c59f68caad6a6a8e59a297bf3ef3b9fb51ad26080ba2763df815376eb3d6d"
+        },
+        {
+            "type": "file",
+            "name": "config/services.php",
+            "size": 979,
+            "hash": "76f41873f7a25f3f91bcf5e8b5fecc4655b046fdefb4ab67d6f7e7ff56e73141"
+        },
+        {
+            "type": "file",
+            "name": "config/session.php",
+            "size": 7025,
+            "hash": "af96916a4a3ac5678383706ce8fda057c211ccb33de47d24629a854d1a4499db"
+        },
+        {
+            "type": "file",
+            "name": "config/view.php",
+            "size": 1053,
+            "hash": "31296429fea0b7bc8392bdf63c5a664524c84634cdcd8d54c51d73d762c4b2ef"
+        },
+        {
+            "type": "folder",
+            "name": "database/factories"
+        },
+        {
+            "type": "folder",
+            "name": "database/migrations"
+        },
+        {
+            "type": "folder",
+            "name": "database/seeders"
+        },
+        {
+            "type": "folder",
+            "name": "lang/en"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor"
+        },
+        {
+            "type": "file",
+            "name": "public/.DS_Store",
+            "size": 6148,
+            "hash": "e7efe8459dd86478b4550d984c4afd4ba9d230f6d1032317bc0dfe4bb6342528"
+        },
+        {
+            "type": "file",
+            "name": "public/.htaccess",
+            "size": 603,
+            "hash": "42493ebc7bad9b95a90363cae9d46ca9934f2d5b4177088d7a08371d5a2623c7"
+        },
+        {
+            "type": "file",
+            "name": "public/default.png",
+            "size": 5937,
+            "hash": "d4d86a697b4c4a0386df1404e02c1d9c5330a5b0a3a043695e2ee4e3911adced"
+        },
+        {
+            "type": "file",
+            "name": "public/ateraland.png",
+            "size": 112641,
+            "hash": "d6c21c88f7ec7d35e96ea299afd7a70ecd88f82f240f149f163451e32a1ac0db"
+        },
+        {
+            "type": "file",
+            "name": "public/icon.png",
+            "size": 120735,
+            "hash": "b435a4cc524b63978e118f7324ddd7a97a701a9bd7793ff8c451fc795d15d7ee"
+        },
+        {
+            "type": "file",
+            "name": "public/favicon.ico",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "file",
+            "name": "public/index.php",
+            "size": 1710,
+            "hash": "c96ed6bbe80f9105534af4d1510dc79f0143e6843970dba7ddd4ec7d03097cab"
+        },
+        {
+            "type": "file",
+            "name": "public/logo.png",
+            "size": 120735,
+            "hash": "b435a4cc524b63978e118f7324ddd7a97a701a9bd7793ff8c451fc795d15d7ee"
+        },
+        {
+            "type": "file",
+            "name": "public/permata.png",
+            "size": 236680,
+            "hash": "d804f7f94bade5917ad87a36db691dc93f426fbc80d3073bdc7c7f50d4633f12"
+        },
+        {
+            "type": "file",
+            "name": "public/robots.txt",
+            "size": 24,
+            "hash": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor"
+        },
+        {
+            "type": "folder",
+            "name": "resources/css"
+        },
+        {
+            "type": "folder",
+            "name": "resources/js"
+        },
+        {
+            "type": "folder",
+            "name": "resources/sass"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views"
+        },
+        {
+            "type": "file",
+            "name": "routes/api.php",
+            "size": 1281,
+            "hash": "a1aa7c354678a196fb866bda8c50cfbe8873d805d1872afaae76015d2e4cd8e1"
+        },
+        {
+            "type": "file",
+            "name": "routes/channels.php",
+            "size": 558,
+            "hash": "5c776998675a7c7d3303b3cd0517e314755cd9d582c17b18238c3686b17d76ac"
+        },
+        {
+            "type": "file",
+            "name": "routes/console.php",
+            "size": 592,
+            "hash": "69ec50e361f429e7ffaf95011f9e3cab75481ad753405755580e8e89b1518b20"
+        },
+        {
+            "type": "file",
+            "name": "routes/web.php",
+            "size": 6455,
+            "hash": "24b1a057237c8f50d5a19c8183bfdf5d0f26e1ba1237d00cc98d5a3491d211c9"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework"
+        },
+        {
+            "type": "folder",
+            "name": "storage/app"
+        },
+        {
+            "type": "folder",
+            "name": "storage/logs"
+        },
+        {
+            "type": "file",
+            "name": "tests/CreatesApplication.php",
+            "size": 380,
+            "hash": "63e92d10f62118215f6a4ee20036e86a26d6867175365429e65de33d0c60ba21"
+        },
+        {
+            "type": "folder",
+            "name": "tests/Feature"
+        },
+        {
+            "type": "file",
+            "name": "tests/TestCase.php",
+            "size": 163,
+            "hash": "fde47044bae82a492f646384cbc1e636b93c6bf0cea7047c3631e6a26736154d"
+        },
+        {
+            "type": "folder",
+            "name": "tests/Unit"
+        },
+        {
+            "type": "folder",
+            "name": "app/Console/Commands"
+        },
+        {
+            "type": "file",
+            "name": "app/Console/Kernel.php",
+            "size": 526,
+            "hash": "7dba97cc49815ea208f44fd3358168cc11257bd4609c017bd0cefe7084f1f4eb"
+        },
+        {
+            "type": "file",
+            "name": "app/Exceptions/Handler.php",
+            "size": 1050,
+            "hash": "e76e98ef586a6da9c58dbf8ff5635b45eb627f35e86cffa4ab4b54a89b62996f"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Controllers"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Kernel.php",
+            "size": 2593,
+            "hash": "1f7885e78f7f957d872fb2254547e744bba3283d45bbf19347b42597781837eb"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Middleware"
+        },
+        {
+            "type": "file",
+            "name": "app/Mail/CarBooking.php",
+            "size": 610,
+            "hash": "66b7aed7d7d7e8a7da8796c7d6d975d2f87d509b08da647354a987c650b3fde5"
+        },
+        {
+            "type": "file",
+            "name": "app/Mail/RoomBooking.php",
+            "size": 612,
+            "hash": "2fc9761059d5dd2af9e74009740e6e059a530796c14927a4774eb51f4fd1e76c"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/BookingCar.php",
+            "size": 210,
+            "hash": "7ce493aea9720bd3260895203ddc89fa5082fa047797479b35bc584b9ce731e1"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/BookingRoom.php",
+            "size": 211,
+            "hash": "0cdcbb7069f13e9264ed62cd7557492d59b090c0b4e071cc7ba1c6dcc89a5f80"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Car.php",
+            "size": 203,
+            "hash": "96a84706d46d492f1e5c1534730b36a166dd82441cc45adb59c261d9801c1e7c"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/DetailBookingRoom.php",
+            "size": 217,
+            "hash": "c1fb9c2d3e8a7ab309e12f0f9ff51394df1ca323ee871e05fc0a31258677ac00"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Employee.php",
+            "size": 208,
+            "hash": "ecf165754729815eb6ba47463c965a1e26ec3be535f9b47415f05f97263d1a06"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/PasswordReset.php",
+            "size": 384,
+            "hash": "936070657fb444cedc2bec6f693a50a53e16082297847a8c26bab0547aba169d"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Room.php",
+            "size": 204,
+            "hash": "69105e8be3287a9dd9c056da874ac2b079f0c193e4cecbd25b890ee332335c5f"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/User.php",
+            "size": 1042,
+            "hash": "2f02b7a8ef43566dbfea71f4db9216d07460c51f297675d7eb0cbfeccff24f88"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/AppServiceProvider.php",
+            "size": 400,
+            "hash": "66190cf018d02b16d6a29595d6aa25ffdb479e9ab2ff842deae19465d685f570"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/AuthServiceProvider.php",
+            "size": 1344,
+            "hash": "1eff738b3977e8d64bd354ea723842d366694205a5a4e8523d9593666d41e136"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/BroadcastServiceProvider.php",
+            "size": 380,
+            "hash": "6dade8c1ce5b4f91204e5c56f821f658f3e24d3d5bbae1a625c6914995ad81d2"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/EventServiceProvider.php",
+            "size": 926,
+            "hash": "ca762bf87e69ec98b7324942fb4062a245cecfe7d4d04c5cb91c1bcde4496be6"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/RouteServiceProvider.php",
+            "size": 1327,
+            "hash": "ac3feac96a4fef80c555d6e064ba2bde9471e121ad296ac8b8b71d9468ea52be"
+        },
+        {
+            "type": "file",
+            "name": "app/Rules/MatchOldPassword.php",
+            "size": 617,
+            "hash": "3b9074fe7ae3880f62e47e78361d1125b7f0c1e8d0fb1bdf008bcb9ed2b616df"
+        },
+        {
+            "type": "file",
+            "name": "database/factories/UserFactory.php",
+            "size": 970,
+            "hash": "b5812aa56f4a766326e3d0638374059cbb2ed377dff247aaa59966e3ca57166d"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2014_10_12_000000_create_users_table.php",
+            "size": 1131,
+            "hash": "caf946d3f0dcd3d6aea84a5def173e12c92cc1403e89378366c625966c094e89"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2014_10_12_100000_create_password_resets_table.php",
+            "size": 669,
+            "hash": "fc81bc1fc4c8e933f520b445ff56b5015c0c124c8505e90cd26e724acf94c418"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2019_08_19_000000_create_failed_jobs_table.php",
+            "size": 810,
+            "hash": "69197c463f551c7e5d92247786502e4da0dbaa39d4a206604d39b20f54931d29"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php",
+            "size": 898,
+            "hash": "5ddab635a1ab9e278bb9c828e840b5e4c38e3321565d0c494e8acfc5b78502a9"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2023_01_09_213211_create_rooms_table.php",
+            "size": 740,
+            "hash": "01a8b26316efe16665292db3c4b193a966f81fa657af38cbb3749ab043f15499"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2023_01_09_213222_create_cars_table.php",
+            "size": 788,
+            "hash": "04610499361f827581e74a952be27b3e0fb374564900d4f64bd30c4438f46266"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2023_01_09_213429_create_booking_cars_table.php",
+            "size": 1238,
+            "hash": "c50880377063abfa99548b6d28dfa12125c221dab77de3997709a2f310ba3363"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2023_01_09_213434_create_booking_rooms_table.php",
+            "size": 1023,
+            "hash": "a8ba9b3563d8ed4da36cbe8fc36a2bfeeaace61a8130578d0513930945816d7b"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2023_01_10_115319_create_detail_booking_rooms_table.php",
+            "size": 717,
+            "hash": "d834601627ea3756619125174a62533f4e45be97cd3dbbe1898773780db907ef"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2023_01_16_165805_create_employees_table.php",
+            "size": 712,
+            "hash": "c08f46afc964bc9aaf1a00eab8605dcb6d5e30b700fe34ff14ecb1bf8fefdd67"
+        },
+        {
+            "type": "file",
+            "name": "database/seeders/DatabaseSeeder.php",
+            "size": 492,
+            "hash": "4907fdf95b3625f0d14881faa4f35feb854a0e86d79f5d874e81202006bb2b4e"
+        },
+        {
+            "type": "file",
+            "name": "lang/en/auth.php",
+            "size": 674,
+            "hash": "029823d4e0f2a8cce3b9ccb90e3eacdb4c9f28947ba59a5525bd39c14c869716"
+        },
+        {
+            "type": "file",
+            "name": "lang/en/pagination.php",
+            "size": 534,
+            "hash": "5c9bed6d2c965666d0c8b9f17f93f87cbfc7a240ead19b3b061764e8238e219f"
+        },
+        {
+            "type": "file",
+            "name": "lang/en/passwords.php",
+            "size": 744,
+            "hash": "1033d4d34a49e17610dee7a13e14d13525472a96396a96c07d3870f337e10498"
+        },
+        {
+            "type": "file",
+            "name": "lang/en/validation.php",
+            "size": 9485,
+            "hash": "269dc0d0b2dba59cfc2d049e3e972ff9fc20cfb116a6be174e6c2a6dfc1ed725"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/adminlte"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/bootstrap"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/fontawesome-free"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/jquery"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/overlayScrollbars"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/popper"
+        },
+        {
+            "type": "file",
+            "name": "resources/css/app.css",
+            "size": 217,
+            "hash": "105097227fb3fb527743b221df2603b3e9e5f5ae8826ba03f410774cf26161ae"
+        },
+        {
+            "type": "file",
+            "name": "resources/js/app.js",
+            "size": 22,
+            "hash": "cf6dab196c721f6911ff99cc4f910897f978599a2d289971a316a5fc33091f94"
+        },
+        {
+            "type": "file",
+            "name": "resources/js/bootstrap.js",
+            "size": 1208,
+            "hash": "355a3ade1bc7cd4e43666bb7af4171c7ee1c4fd9e1424f9bbd06692b7379c5e8"
+        },
+        {
+            "type": "file",
+            "name": "resources/sass/_variables.scss",
+            "size": 138,
+            "hash": "be4490e8eeab84b8422e242865a80e5e8d9975adea391e2d265ac12c8d4d9ad6"
+        },
+        {
+            "type": "file",
+            "name": "resources/sass/app.scss",
+            "size": 152,
+            "hash": "a134dd13ca8754a8f9e61232bd16cf0a3f32cfbe14cfeddca4c53fe4c9168870"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/auth"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/home.blade.php",
+            "size": 193,
+            "hash": "60bd078dab447ce1cb3f1b6ef90c8b254b6b7cf47b7e2827d5543816abb601e1"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/layouts"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/notify"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/welcome.blade.php",
+            "size": 18425,
+            "hash": "b2945c04fa90bcc90f07d4b0758abd413ea4c5c65210c95b46366da7035bdc65"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/cache"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/sessions"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/testing"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/views"
+        },
+        {
+            "type": "folder",
+            "name": "storage/app/public"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/ExampleTest.php",
+            "size": 380,
+            "hash": "8104193c55d0372299a012da410eb20e94269ac73e2bbebb666d731425ac0ca1"
+        },
+        {
+            "type": "file",
+            "name": "tests/Unit/ExampleTest.php",
+            "size": 264,
+            "hash": "80f73478049930f5adbe3d676ef70dd5f53f68f19c16c368439d091180506c52"
+        },
+        {
+            "type": "file",
+            "name": "app/Console/Commands/EndMeeting.php",
+            "size": 599,
+            "hash": "20f14f842c792ba92493c50265ed89c1bef99214e8237aa0f0ee520800a442a9"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/ApiController.php",
+            "size": 5692,
+            "hash": "4808f89385bc71bce119f96032b509bcfe3c77f0fb478ff28d47a37db7790e42"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Controllers/Auth"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/BookingCarController.php",
+            "size": 15660,
+            "hash": "d4cb7e4e4a93e2c3d365358d29117d932616599d1527fd3a285a00e1e9278fa2"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/BookingRoomController.php",
+            "size": 16826,
+            "hash": "10ba3ccc95953bdb03b0a732731e0269ecc32a0538b83e937ffb796f21b8828c"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/CarController.php",
+            "size": 3541,
+            "hash": "73f7ad5683ea0a38de73f87f4e6a910db3ecd81552da09401ba05bd9568de888"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Controller.php",
+            "size": 361,
+            "hash": "03b82a5051ca8dd75ed2833cf29cd1747358972471d24c36f74648aaf05b5e8f"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/DetailBookingRoomController.php",
+            "size": 3023,
+            "hash": "5b2f801c9523a06c3fadae32cf42ce29177e673a8f38143c13ce78e4014d5906"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/EmployeeController.php",
+            "size": 2355,
+            "hash": "3cd01c4333e46c7424f9b850964ab2108edde02f0d357af662d5a5e56c8955f7"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/HomeController.php",
+            "size": 467,
+            "hash": "a3527d016f66ba53ee7f7e228f8a80d60f0545bda4017966d4abcb601fc4f070"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/RoomController.php",
+            "size": 3511,
+            "hash": "9a38c7b65450582dbefa027e04ee684432c14febc73d602fa3363b0f97caf570"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/UserController.php",
+            "size": 7974,
+            "hash": "7d66e8f423bb3fd0a12433cb1d042d8ab2cea79e78f18ec15f3defd605ddba08"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/Authenticate.php",
+            "size": 468,
+            "hash": "31126bf2ca0536af01b2bd10866a61aceacf95423579665d5a67db41dd1e3046"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/EncryptCookies.php",
+            "size": 307,
+            "hash": "958e86e38afd4321b443b8c4aaef17fc956bbac93410d54af2f74213c52e9b87"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "size": 366,
+            "hash": "63a907517beed52be7dad5dbda73e9ecd504b1cece86a80c007526998e146974"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/RedirectIfAuthenticated.php",
+            "size": 877,
+            "hash": "b5d645f77c2790f685477797fa10fb915e6564d42846a20c362ed5042789a536"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/TrimStrings.php",
+            "size": 381,
+            "hash": "107bf2dc8b970b2956548ab63221b350587f1fb94792f786f047723da5e2c615"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/TrustHosts.php",
+            "size": 372,
+            "hash": "1c6e9a1b0d698038bd2e54598b144275b56e9838d78bb833cbee12e567b33761"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/TrustProxies.php",
+            "size": 649,
+            "hash": "9ba084335e120f472f21ced3e062e07dca6333e8ba91029e44dfec485f9c6485"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/ValidateSignature.php",
+            "size": 460,
+            "hash": "b63174bf5ac6fbb47dc97cc29e243d68500c27fa1845961a789df1587b8a35d4"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/VerifyCsrfToken.php",
+            "size": 320,
+            "hash": "4cf686438284e60066d1851141afb196540df76bb0c923dd761d6fea82558f40"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/ar"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/bn"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/ca"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/de"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/en"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/es"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/fa"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/fr"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/hr"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/hu"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/id"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/it"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/ja"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/la"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/nl"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/pl"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/pt-br"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/ru"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/sk"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/sr"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/tr"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/uk"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/vi"
+        },
+        {
+            "type": "folder",
+            "name": "lang/vendor/adminlte/zh-CN"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/adminlte/dist"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/bootstrap/js"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/fontawesome-free/css"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/fontawesome-free/webfonts"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/jquery/jquery.js",
+            "size": 288580,
+            "hash": "1fe2bb5390a75e5d61e72c107cab528fc3c29a837d69aab7d200e1dbb5dcd239"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/jquery/jquery.min.js",
+            "size": 89501,
+            "hash": "ff1523fb7389539c84c65aba19260648793bb4f5e29329d2ee8804bc37a3fe6e"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/jquery/jquery.min.map",
+            "size": 137960,
+            "hash": "877907056bec379928651090863e7c48b3230ed31857f043c98d377e88bcbb03"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/overlayScrollbars/css"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/overlayScrollbars/js"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/popper/esm"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper-utils.js",
+            "size": 33894,
+            "hash": "a0eaed11673c7d4081cff133c0f5bb2b4dac14a0b0ed387a0e2886e37ba02c2a"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper-utils.js.map",
+            "size": 61481,
+            "hash": "7ff9a6513c387c5bcd88b2cf19888c8d0ea9774d3fc4320d75efafb2f12cd90c"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper-utils.min.js",
+            "size": 10201,
+            "hash": "648dee9f87df4867209b292d9a98c79c8110f7cc95ac3ac31bba98579dba6b18"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper-utils.min.js.map",
+            "size": 53753,
+            "hash": "066587016755fe0cd058033eb54e155d5fe1e2aec02a7347d13d39990e218385"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper.js",
+            "size": 84861,
+            "hash": "335e4d9982dde7e068790786465dd92d92ee1ac9e52a6c9171a83c9f86ea0073"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper.js.map",
+            "size": 140064,
+            "hash": "6e86035b494ad965d4496ff6dc435a007af5707ac20281da06d404640256ea48"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper.min.js",
+            "size": 19903,
+            "hash": "3b5ec1c452ad4edd6dcf3964718c2038dc382b9f47fabd6223c992417bd27f99"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/popper.min.js.map",
+            "size": 125107,
+            "hash": "57f254bf500398980b550a13165293733404768a5954509aeb514bb5389c5b00"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/popper/umd"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/login.blade.php",
+            "size": 32,
+            "hash": "4b805317cd69585d9155050bfb7d17d3fa0e9bf83fb2568968d030e448d52085"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/auth/passwords"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/register.blade.php",
+            "size": 35,
+            "hash": "85a860727bcd955fbcebf051bed666e587526e681b21485118fa001704c4f692"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/verify.blade.php",
+            "size": 33,
+            "hash": "93fc4f5bf275d9d83cc72a744703a49ad7ac140ff9f54644275b09f239980211"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/layouts/app.blade.php",
+            "size": 3502,
+            "hash": "cd02962f78d099b24e59e99c316d34ee544c12940212814c037ec5e61237705d"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/notify/forgot_password.blade.php",
+            "size": 223,
+            "hash": "b9a6c916b32f74526101bf18d43d60c213422fe738c826456f3b031d26a4a100"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/booking"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/car"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/employee"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/notify"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/room"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/user"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/cache/data"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/ConfirmPasswordController.php",
+            "size": 1024,
+            "hash": "26c6fd9c78ccb6a6ae1cf825132b0125ed2d4ce4453278a886518b3a5e9ea48d"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/ForgotPasswordController.php",
+            "size": 667,
+            "hash": "69c2a109ef0802b93693b1f7318144d7bfcd871e0dad6e011eb374211c5da53f"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/LoginController.php",
+            "size": 1002,
+            "hash": "9d7514251b42ba01b41e4ade38ba77fdae57e8fb23931bf5f121eac81ee5e9b0"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/RegisterController.php",
+            "size": 2047,
+            "hash": "d67a803ca0a96393ebc92a3f84ebfc51e7670f0bc7a25edc678eb4c0652720eb"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/ResetPasswordController.php",
+            "size": 844,
+            "hash": "88eae676ff5dbdb919c1f427ab5fa778729be30137a24b793eda738187703b6c"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/VerificationController.php",
+            "size": 1130,
+            "hash": "8c06f52b1aa9467bb6d7cc2f1b1aad23b746da39a3a3191a7c72a0b506284ce3"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/ar/adminlte.php",
+            "size": 1260,
+            "hash": "557d3f4b9f3ce180b3c2af09e9e4a0ca2d2cb13ad89a9d178e98325d2e6b1814"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/bn/adminlte.php",
+            "size": 2921,
+            "hash": "d99f470fb2221ef5b50b4936c92a89e4358b1d6485c0107aa156fe1452678640"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/bn/iframe.php",
+            "size": 907,
+            "hash": "7c3b0bec220a540958f351c154fdd5c034f150c08fb59fc46ee43e62bfdeedc9"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/bn/menu.php",
+            "size": 1005,
+            "hash": "48884e376e2f6e0aeb950591087a3f60f903afa784a7d564da13ed27d224fec4"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/ca/adminlte.php",
+            "size": 1038,
+            "hash": "17f49990033fe224f2bd46ad15b772bdd27594e9cc9c694b3a41770491cdc24f"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/de/adminlte.php",
+            "size": 1686,
+            "hash": "4212316e6b902f5119659c63615e2d76055e8f79f9008e664acbc1770ef33417"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/de/iframe.php",
+            "size": 718,
+            "hash": "1c41a4ade9605cf3ba4e4d8e5979f03728681ea9d9e5a968ce7723683cfeec89"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/de/menu.php",
+            "size": 753,
+            "hash": "cda3dcc295ae84db524b9556dd190376185b88301028feafa2528fc484de776d"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/en/adminlte.php",
+            "size": 1595,
+            "hash": "3a963429e2f09292a760e1262f91aefa6798bbe134c690dacb67054ad718c84c"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/en/iframe.php",
+            "size": 693,
+            "hash": "87318640f73bc0828421db9612e14ffd0f53567f428a05a4be0d92e3f5de9c8a"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/en/menu.php",
+            "size": 749,
+            "hash": "13ce9640602fd7979b048ad14aee7ef19a2134de5cedc8cb7f0e81c104ab1b6c"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/es/adminlte.php",
+            "size": 1726,
+            "hash": "808ea39f7decf853c11c8ec5f8f2cf9126caea5ac7a60199ac82486c0840939e"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/es/iframe.php",
+            "size": 713,
+            "hash": "c67699d69ccccfbc3242228dc6118a6557912ab24489c51efd1136159e25f6dc"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/es/menu.php",
+            "size": 767,
+            "hash": "17c8e7a21c3107c15cb9cdf34c82f45ab67508ec88a6318cf2b7c3328be8e05a"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/fa/adminlte.php",
+            "size": 1138,
+            "hash": "48a7a9e7042cbdf09f41e0d14cdbd5ed80fe7a8d39306c5fcf78cd74a24d30ae"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/fr/adminlte.php",
+            "size": 1810,
+            "hash": "552073fbff844780297df9688402dbbaa7dec4723905bcd28364cc466cc764a5"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/fr/iframe.php",
+            "size": 725,
+            "hash": "c08bef0091a0ef66d7b02b0131144de089a652c77be9282a7e1cca0336c24f42"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/fr/menu.php",
+            "size": 764,
+            "hash": "519a0b60074d79906258b7f09b66251b1668662898e0bd0fd64d96554b3494f3"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/hr/adminlte.php",
+            "size": 936,
+            "hash": "79c1f149e7798f17627ef3e85df9041242461ae0f48b5153863dd20aff5d82fd"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/hu/adminlte.php",
+            "size": 1038,
+            "hash": "a75aea1c49279cf565fad9c28ca79b4aadaadb2bbe70861fbbc5f26a261a5f23"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/id/adminlte.php",
+            "size": 1730,
+            "hash": "cfa77f0d4c2862eda4630c5c5d456b1ae472d9f5b2ca1485a0847b85fdec7d3c"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/id/menu.php",
+            "size": 745,
+            "hash": "c82a564d1d7b3d64e26d74f68a85520096d9a876452ffb9ea5f7d30c5de25ef6"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/it/adminlte.php",
+            "size": 1026,
+            "hash": "e32ad03f345bf85506c89b85183cf23d319a14bcff59738291b2a9b8b8b8b2f9"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/it/iframe.php",
+            "size": 712,
+            "hash": "396361f46eddda25a2550998e362b0d4e3a6c928d1d0127533b4d021e9a1ba20"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/it/menu.php",
+            "size": 774,
+            "hash": "dd1797cd1c48f240bf98615b1387eb19aabc57a9ba2c896ec5ace3fd85577a00"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/ja/adminlte.php",
+            "size": 1690,
+            "hash": "62be0673d9b0a34480f2cb46deff2e4bc0244f23143372bdf612f86a67cc7904"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/ja/menu.php",
+            "size": 808,
+            "hash": "9ec224f7dea84345547ae23523a2fa318e63d9937ec5f420a27ead2e4a313cc5"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/la/adminlte.php",
+            "size": 1419,
+            "hash": "709443a8e4f0838baadf58916ba72cb06ab30c33bc1c5ec30d9c430b32675171"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/la/menu.php",
+            "size": 920,
+            "hash": "af0505e0b8941384ebfb00fc3160442e5ad08a2404d067a8bc6839db12a61435"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/nl/adminlte.php",
+            "size": 1071,
+            "hash": "49a4b664d9689039f74d35ebb6b1a2cabfbcb7560a4793a1ee9662d0a124be17"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/pl/adminlte.php",
+            "size": 1533,
+            "hash": "1272f20df45e3bebb08d687a5e3caa7d33fb401676b688c97db242cb142359a9"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/pl/menu.php",
+            "size": 759,
+            "hash": "016358fbd1700308e1a3703b50668396b4a4bbbe0b861b469dd89950d51dfcfe"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/pt-br/adminlte.php",
+            "size": 1513,
+            "hash": "c798445ea5ce581370b9b52862c8f01ffd3faba56e26314072c1956f7e4c56d1"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/pt-br/menu.php",
+            "size": 766,
+            "hash": "45a16a1cdf45161ed307e3f0d82248ec341605ff1ed3b1592a7aa93864ab0e20"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/ru/adminlte.php",
+            "size": 1295,
+            "hash": "0b9356ad22103a23533b80b7514196f4802ea3642071f7ea64642a23a5913b43"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/ru/menu.php",
+            "size": 886,
+            "hash": "7e7eb93b59e2483a354b9db1611eacd2d2d9a4d21763f814fd4c2899d9aada59"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/sk/adminlte.php",
+            "size": 1669,
+            "hash": "0950c4a8767e3ca73caa8f96341c0bd4a54c77e4411bcb91aa86cae9c13df31f"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/sk/iframe.php",
+            "size": 720,
+            "hash": "630239159943b5a61f442958301eeba487442e65d4a1651e81ab3656ca94989c"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/sk/menu.php",
+            "size": 770,
+            "hash": "a55fe9c7424c75522d4151701754217c6f0cfa7536ccabdfc281f107df71e3cf"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/sr/adminlte.php",
+            "size": 1555,
+            "hash": "a524c63a72cf61aa1e5728c0a73b04d9af094b527a4e39926a86d30e5d1ba40f"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/sr/menu.php",
+            "size": 850,
+            "hash": "fbd413df98b51f80a0dd288ec22475cbd56cfc8fc3d3b279f929b6e2a6e15bf1"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/tr/adminlte.php",
+            "size": 1628,
+            "hash": "c2e25ec3fb815e77bcbdf8273cf0a1d937601aa189f44e25993726af99d715b2"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/tr/menu.php",
+            "size": 748,
+            "hash": "48d4d5b0cf517c2cc605f949a81456d653764d0a464b5329e1d50426d213e994"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/uk/adminlte.php",
+            "size": 1273,
+            "hash": "4fc5cdc56fe4724f0c67ed9c5bd820a38527ba0e03850831a63a4f5ce2581734"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/uk/menu.php",
+            "size": 880,
+            "hash": "64e6b7cc46d99eb89cd9fa08f6b78b6bb36a369373c87145b8bc6fa29adc2919"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/vi/adminlte.php",
+            "size": 1116,
+            "hash": "48380c7bbaf6a4671d5c77eef7a2a5849c0a0b19fb68f20e30b38035c4bcfcec"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/vi/menu.php",
+            "size": 791,
+            "hash": "515e022f13b027b2bf93c82dd6f55575f205d27706cc1f38aeab18d323c82490"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/zh-CN/adminlte.php",
+            "size": 903,
+            "hash": "fc610852cc89f0b5497b8e7f24a3e3dddf777451186cc9ba58e749d4d89abb6d"
+        },
+        {
+            "type": "file",
+            "name": "lang/vendor/adminlte/zh-CN/menu.php",
+            "size": 736,
+            "hash": "d815efab3d1e6086b194bbf85bdf462493fc47fdd59b9ef28b5bd377d99506b3"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/adminlte/dist/css"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/adminlte/dist/img"
+        },
+        {
+            "type": "folder",
+            "name": "public/vendor/adminlte/dist/js"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.bundle.js",
+            "size": 230462,
+            "hash": "78a6f96d14ed1a2edff177d6923c551b2256b70f604b55fef72aa13479257d62"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.bundle.js.map",
+            "size": 402657,
+            "hash": "66176b2b06e61738fda043a621a94c37ab6af76d4e44fb93b6e22446f374cb92"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.bundle.min.js",
+            "size": 83253,
+            "hash": "7e02c082fedfc821a8a51fe004dab6896dd928876a21ccac8675142c2e2f7b1f"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.bundle.min.js.map",
+            "size": 311239,
+            "hash": "fb3c66cc07328df2228dfd01edb736dbf47699e2701ee6e03b1e9d6e2a54d964"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.js",
+            "size": 137577,
+            "hash": "ebe141049ad8f106d836ce807823f72529f39a64d7ffe605b4de2248eb5848a6"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.js.map",
+            "size": 247551,
+            "hash": "c71d80664c27e76e10e0c7f684e2212b7ff86bd8ecc77c2e0768c0802c41e6cb"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.min.js",
+            "size": 62440,
+            "hash": "4b24eee82c2b7ce85ace76193e8a25570dabc6863b94a60a42fa9bb6a37ddc72"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/bootstrap/js/bootstrap.min.js.map",
+            "size": 187646,
+            "hash": "ed82eef7561317f8efd73b4fab61b8ed02c7ccc990b7d7fae7e3d2f302a4af31"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/all.css",
+            "size": 73577,
+            "hash": "0cb8cc3fee4275e182236ab19c3aae55274f43aa0ffde9c0510d8d59fcf8e5dc"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/all.min.css",
+            "size": 59305,
+            "hash": "99464ceb71bc9bbdcc72275faefe44f98eb5cbb6b5d8ee665b87b35376f1a96e"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/brands.css",
+            "size": 732,
+            "hash": "96ce2e8d519de7f89843194ef7c960cec82f0ade0f47461d550fa854fe1748a1"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/brands.min.css",
+            "size": 675,
+            "hash": "71d8dae725ec4dd82504e24d40cf6e5678b0e02d28888a68f6b8488a87d424dd"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/fontawesome.css",
+            "size": 71942,
+            "hash": "21e93a14582bd7e8ab521f72d537c7ea9c607af47d9440a0de323034e924cba0"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/fontawesome.min.css",
+            "size": 57873,
+            "hash": "0588d1661498d804543dc1537f9784877a962b9f0ef3c4ccee765eb7f2543611"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/regular.css",
+            "size": 734,
+            "hash": "9d56263a6dc471b8a60af3737c062263dd47a3d393e628be8b21aae4869fe485"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/regular.min.css",
+            "size": 677,
+            "hash": "8ffbd97e0bd6d33be9ea8ccc0f497377055e61c00c8b412f696eaab4a929978e"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/solid.css",
+            "size": 727,
+            "hash": "03c7efb4ae3db417432ce83897f232b3cd46fe912bf3b0c91f588369513f6ae0"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/solid.min.css",
+            "size": 669,
+            "hash": "882e58c671a484d0daa97a2807060e1a1ad16e73a87753f494a0a8f24412164b"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/svg-with-js.css",
+            "size": 8077,
+            "hash": "cb398704b072907102bc335c92d772c632da124e72c9023e7bf8e994ee0869a1"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/svg-with-js.min.css",
+            "size": 6359,
+            "hash": "31c4e9af28a9eca3c66d74a4817d0b4fcb20babd5ee79a959075fcfccb873902"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/v4-shims.css",
+            "size": 41312,
+            "hash": "d9ab2c47cb050f71c838359bcd89ce1462d80dac502b631f19a13f23f0513ae6"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/css/v4-shims.min.css",
+            "size": 26702,
+            "hash": "8fe2f1cb7bc41c640ad3ea24449cfa1ba5291e16dbbbab0ef61bfe43f3212910"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-brands-400.eot",
+            "size": 134294,
+            "hash": "e4299464e7b012968eed63ac2db1c9509f56bca409ef9f71f2926a8c3c80b2a9"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-brands-400.svg",
+            "size": 747927,
+            "hash": "a3b9817780214caf01e8aec20bcdc2305a1ff34a15fae81ecd0923df9cd5cd0a"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-brands-400.ttf",
+            "size": 133988,
+            "hash": "cda59d6efffa685830fd95b55f64ae9cb51279cd34b2410b69f84c7ec30157d9"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-brands-400.woff",
+            "size": 89988,
+            "hash": "f9217f66874b0c01cd8c10b6a295dbc4f609acb6f5adc41c37da46641b57eb02"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-brands-400.woff2",
+            "size": 76736,
+            "hash": "8ea8791754915a898a3100e63e32978a6d1763be6df8e73a39d3a90d691cdeef"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-regular-400.eot",
+            "size": 34034,
+            "hash": "79d088064beb3826054fb88165416235897a856ca952fca1498b1c59b16aaa48"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-regular-400.svg",
+            "size": 144714,
+            "hash": "be0a084962d8066884f7fe9bd27ec16e51f5a93b72a502c92c5a24dc87eb2ebc"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-regular-400.ttf",
+            "size": 33736,
+            "hash": "e8711bbb871afd8e9dea60e16d30f00c7e4837bbc9807065017475b849fa2313"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-regular-400.woff",
+            "size": 16276,
+            "hash": "cb9e9e693192413cde2b1f21c1dc1d44b6fe7b27cc2b458e8b359d18f9ff8f4e"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-regular-400.woff2",
+            "size": 13224,
+            "hash": "e42a88444448ac3d60549cc7c1ff2c8a9cac721034c073d80a14a44e79730cca"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-solid-900.eot",
+            "size": 203030,
+            "hash": "373c04fd2418f5c77eea49d514731058f1907a94ff3b4e5d7c3e5767e8b53d8b"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-solid-900.svg",
+            "size": 918991,
+            "hash": "9674eb1bd5504717903837093a67668ea88f2ed006d91367d0d4b7aa1f9211fc"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-solid-900.ttf",
+            "size": 202744,
+            "hash": "af6397503fcefbd613976c21ad5c1e37298c18bbe07d096db03ccd3af6e05ba8"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-solid-900.woff",
+            "size": 101648,
+            "hash": "3f6d3488cf65374f6f676c315340b0ac2be832bd55240c809448e36ef9b96326"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/fontawesome-free/webfonts/fa-solid-900.woff2",
+            "size": 78268,
+            "hash": "9834b82ad26e2a37583d22676a12dd2eb0fe7c80356a2114d0db1aa8b3899537"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/overlayScrollbars/css/OverlayScrollbars.css",
+            "size": 23754,
+            "hash": "dab3e25172fc713a80f58bf6731dc2984678acd8e969d62bdb4b6171012dc1f4"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/overlayScrollbars/css/OverlayScrollbars.min.css",
+            "size": 20009,
+            "hash": "049e2dc17a8284c5c1140795fd26abad33357be3ad012e71482a40c47e7d567b"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/overlayScrollbars/js/OverlayScrollbars.js",
+            "size": 362665,
+            "hash": "5939e6cdd95d9f9413493f613c0cdf1e9d42fb20c1bc4bccc0349edec8dcb321"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/overlayScrollbars/js/OverlayScrollbars.min.js",
+            "size": 53768,
+            "hash": "ee61ec65bd3bc8cc949991393cfd5aca248620bc53e8ac94f9afe44c30961c0f"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/overlayScrollbars/js/jquery.overlayScrollbars.js",
+            "size": 318013,
+            "hash": "459f7c78e5b15b26120f1da707f760e9a24bbc0102581958bb7d6c3efa8281af"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+            "size": 42602,
+            "hash": "b41777f2e5a5be07e9b37cc73eb51bd9e3c183e67c12331fd1096814e373a6f5"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper-utils.js",
+            "size": 35566,
+            "hash": "e6cbdd3d5fe924718a764c32db3a3c8df1f5f76e4569f91f7c30da6d3d9c1019"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper-utils.js.map",
+            "size": 61746,
+            "hash": "86e6d82a1d2200d946bf7e4930e36993fa69787f61a4f6ede77cfd4d23bf4334"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper-utils.min.js",
+            "size": 10654,
+            "hash": "340b6edc1ae1d1ea0843864953daa9bd642a4b9611e7545a4dc09938ddaaa069"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper-utils.min.js.map",
+            "size": 53959,
+            "hash": "a65a930751deff3fb4c5499f2c5db9a77146c9aadd9e4035a16bc3bc9407734e"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper.js",
+            "size": 88482,
+            "hash": "543d57563da86d6a4295b11b6e429873a7d09c484295f64c9fa516c7ca16cf87"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper.js.map",
+            "size": 140737,
+            "hash": "49b16e36ae38f0e086e927e9924716cdd37578e0e2eed80b62520631477d77ce"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper.min.js",
+            "size": 21204,
+            "hash": "68a97b0f5344c55f68e69733b4680ea70cbacde67e4c349935a441e4853b681f"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/esm/popper.min.js.map",
+            "size": 125307,
+            "hash": "3e94b3ad74f25b013fe93f0487a65468665dad9688370fe74169a84fb723f64e"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper-utils.js",
+            "size": 36668,
+            "hash": "e127d52f514a6873119f6e9442e0fa570bc34feab9a57584937391104cd25d52"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper-utils.js.map",
+            "size": 61788,
+            "hash": "1e97fa2e76e6a12200ac40b75ee92d6f77a4e6cd027e747963842d923080d2bd"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper-utils.min.js",
+            "size": 10813,
+            "hash": "ad6371b21d7fb98b81672c38966cbd6dd0f07e3e0064f831a9ae66f7bea18887"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper-utils.min.js.map",
+            "size": 53756,
+            "hash": "941de4433cbc3352d0cc91f4fc963b17acec1f59e87d48fab635e2e73f6f1070"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper.js",
+            "size": 88736,
+            "hash": "fcca8f765b43a9eee24a8aa336431befec35ba4e4525d3a9212ed812b5a4b414"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper.js.flow",
+            "size": 3114,
+            "hash": "62e2aec9a9b0047beb7235e8af81b9bfd91e30344b3fbf1d107f62a51c263f6a"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper.js.map",
+            "size": 140747,
+            "hash": "1408c0eb5570ed3279b7d6a9a6f5b3c1cdeb6e6a67e2ec60cfb49bfd608dcd92"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper.min.js",
+            "size": 21233,
+            "hash": "fe28dc38bc057f6eb11180235bbe458b3295a39b674d889075d3d9a0b5071d9f"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/popper/umd/popper.min.js.map",
+            "size": 123754,
+            "hash": "09ddb0790fe897f7b3c2b994cc25d058942a1d3f301edfb7aabe1ad0b821b535"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/passwords/confirm.blade.php",
+            "size": 44,
+            "hash": "d1697eecc4aee7a91507c9c30009d3f5882d81cac7e508f0b03936e27e7fe857"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/passwords/email.blade.php",
+            "size": 43,
+            "hash": "9ae23b26f7050c5bdce40e8ed8fb10ae32f0bfef624726eabb3354fea1c19dd2"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/passwords/reset.blade.php",
+            "size": 43,
+            "hash": "c0e0f5389ddfd35b0cd74ffe228dfa714f2c001c48224c2c7e06b8e690b6a846"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/car-approve.blade.php",
+            "size": 14281,
+            "hash": "0631cde46af38222d14a0cfbb78fe51bbcd852c2ac57e096752f2516bd87ea58"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/car-today.blade.php",
+            "size": 5506,
+            "hash": "b3567b3ed22ab21596ce421b35a8e4ea37c2c5c8685d4dd532a1025fd5631a03"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/car.blade.php",
+            "size": 17750,
+            "hash": "412b5789b4741ffaf75491b47a48c1bce4afc1c13d56bb65eede444aa7f7bea2"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/room-all.blade.php",
+            "size": 7139,
+            "hash": "a00417be1da8b1e729eeb4473b7d0e020d948f9621ed101161117529a2798514"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/room-approve.blade.php",
+            "size": 12631,
+            "hash": "19de8775dfe71989db978cbfbc4f45866dfc562d625aa4337d14282d56e31069"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/room-detail.blade.php",
+            "size": 7595,
+            "hash": "185a87e9e79278940998192cb07e64886681f28b9fabbf6e3456cce279dda567"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/room-index.blade.php",
+            "size": 3260,
+            "hash": "d63835daf4cb4358ddc2f659f8758c7e56ac3891314a4ca366ab95d0cb4b5526"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/room-today.blade.php",
+            "size": 5326,
+            "hash": "e6623c9c742c801fa38709b15e67232d4f17cc9fa2403ae39a30bad1de7b78bd"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/booking/room.blade.php",
+            "size": 18052,
+            "hash": "6a886fdf66bbfd064eef907990d60a0feddae82700963a0acd4fe210049d3e5f"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/car/index.blade.php",
+            "size": 12055,
+            "hash": "75fecf92f96a998a9960c9138a075c91e8c7af6305eee5c3a18d234571b86eeb"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/employee/index.blade.php",
+            "size": 9066,
+            "hash": "b751ff8d867a97264cfa875b0a43de0b30f0f0a17959f9c5fdba253e08268b7f"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/notify/car.blade.php",
+            "size": 626,
+            "hash": "7cb9a333ea1b571a72a1f6f0a68fc84370899107035794acb24bc8f731d46219"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/notify/room.blade.php",
+            "size": 672,
+            "hash": "2937d5e453ad642dea395f9ddc20b7e074526cf36f0428b49a611c0cc44f1110"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/room/index.blade.php",
+            "size": 11388,
+            "hash": "015a147e5ac985bfa4e7bb71a31eca81d40100d85e36f4c7eda666e1c33a6c7c"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/room/review.blade.php",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/user/changedata.blade.php",
+            "size": 4771,
+            "hash": "c832aa05c85c43084eb682d5f7dda7dca3809fe7ea480fcc2cc9dc403ee70168"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/user/changepassword.blade.php",
+            "size": 3546,
+            "hash": "e9316ed093ea6635d0183a7c37dd35135d4206f6493f8951fc28cd44edb6e9eb"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/user/driver.blade.php",
+            "size": 12937,
+            "hash": "4158c7ad113703e7a094562cbbd4648064d6e81370425fcec94dc34dd8e8795e"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/user/index.blade.php",
+            "size": 9368,
+            "hash": "9faadeb74229c12f5286082aab83624b149e0ddef5d8b1e08dd7ba009b180e90"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/user/review.blade.php",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/css/adminlte.css",
+            "size": 1559615,
+            "hash": "f99d5cef704447ff68fa6b47e64eef3c6e91ad51ce1f0e3d006d561e81b8b34a"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/css/adminlte.css.map",
+            "size": 2405822,
+            "hash": "d3bff73307478993c730be74a60729b93773d3a2e649f78321894fa0d030fa8c"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/css/adminlte.min.css",
+            "size": 1396747,
+            "hash": "ae1534a2c9540d6ad60f14d8e09c48d9ad8e751b46ed849fdefe737116dcc921"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/css/adminlte.min.css.map",
+            "size": 3846965,
+            "hash": "f91ee5d5f985715d3ea281e4d9a72a7e74290d32b36a2dddc3694f440bdffbb8"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/img/AdminLTELogo.png",
+            "size": 2637,
+            "hash": "b921c343846d962d04dac6339a291e375f89e2d26e89fb3ded1f7ae830f6d456"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/js/.eslintrc.json",
+            "size": 1171,
+            "hash": "b35c53c237c4d47b0a33a2b8a437cb0314dc324add9cd1e823a9caafedb4ba62"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/js/adminlte.js",
+            "size": 104260,
+            "hash": "c872388958d4ae5ca26435e85741d7901dd2e6cb125b91b9cea857a2429559b4"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/js/adminlte.js.map",
+            "size": 179858,
+            "hash": "f4289d891e0f4f1679870fc44646267c62fc41f2254fae523edff9ced913bfe4"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/js/adminlte.min.js",
+            "size": 46369,
+            "hash": "bb6ca87a6d87b4e0900a7b29ddf3bdb23e6452b2feee13807e6f1eb35f00163c"
+        },
+        {
+            "type": "file",
+            "name": "public/vendor/adminlte/dist/js/adminlte.min.js.map",
+            "size": 135565,
+            "hash": "326f0f47f16ce7d47a117d2ed93903a41e792d69f850f8989327d7f847bfc253"
+        }
+    ]
+}

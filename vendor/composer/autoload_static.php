@@ -561,6 +561,7 @@ class ComposerStaticInite8ceeeba6577ebadcc3163559f18af10
         'App\\Http\\Controllers\\CarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DetailBookingRoomController' => __DIR__ . '/../..' . '/app/Http/Controllers/DetailBookingRoomController.php',
+        'App\\Http\\Controllers\\EmployeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeeController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\RoomController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoomController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',

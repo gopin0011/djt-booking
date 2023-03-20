@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'role' => '0',
             'status' => '1',
             'password' => Hash::make($data['password']),
+            'image' => '',
         ]);
     }
 }

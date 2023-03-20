@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'v1'], function () {
+    Route::post('login', [ApiController::class, 'login']);
+    Route::put('token/{id}', [ApiController::class, 'updatetoken'])->middleware('auth:sanctum');
+    Route::get('logout', [ApiController::class, 'logout'])->middleware('auth:sanctum');
+    Route::post('forgot-password', [ApiController::class, 'forgotPassword']);
+    Route::post('password/{id}', [ApiController::class, 'passwordupdate'])->middleware('auth:sanctum');
+    Route::get('listbooking/{id}', [ApiController::class, 'listBooking'])->middleware('auth:sanctum');
+    Route::get('detailbooking/{id}', [ApiController::class, 'detailBooking'])->middleware('auth:sanctum');
+    Route::put('selesai/{id}', [ApiController::class, 'selesai'])->middleware('auth:sanctum');
 });

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CarBooking;
 use App\Models\BookingCar;
 use App\Models\Car;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class BookingCarController extends Controller
 {
@@ -243,16 +247,19 @@ class BookingCarController extends Controller
 
     public function store(Request $request)
     {
+        // error_log($request->data_id);
         if ($request->data_id == '') {
+            $bookingId = 'BC-' . date(now()->format('YmdHis'));
             BookingCar::updateOrCreate(
                 ['id' => $request->data_id],
                 [
-                    'booking_id' => 'BC-' . date(now()->format('YmdHis')),
+                    'booking_id' => $bookingId,
                     'car' => '1',
-                    'driver' => '',
+                    'driver' => '1',
                     'destination' => $request->destination,
                     'purpose' => $request->purpose,
                     'timedepature' => $request->timedepature,
+                    'timearrive' => '-',
                     'datedepature' => $request->datedepature,
                     'user' => Auth::user()->id,
                     'qty' => $request->qty,
@@ -260,6 +267,19 @@ class BookingCarController extends Controller
                     'rating' => '',
                     'note' => ''
                 ]
+            );
+
+            $targetEmail = User::where('role', '1')->orWhere('role', '2')->get('email');
+            $data = DB::table('booking_cars')
+                ->join('users', 'users.id', '=', 'booking_cars.user')
+                ->where('booking_cars.booking_id', $bookingId)
+                ->select('booking_cars.id as id', 'booking_cars.status as status', 'booking_cars.destination as destination', 'booking_cars.purpose as purpose', 'booking_cars.timedepature as timedepature', 'booking_cars.timearrive as timearrive', 'booking_cars.datedepature as datedepature', 'users.name as user',)
+                ->get()[0];
+            $url = env('APP_URL') . '/booking-vehicle/approve';
+
+
+            Mail::to($targetEmail)->send(
+                new CarBooking($data, $url)
             );
         } else {
             $data = BookingCar::find($request->data_id);
@@ -270,11 +290,54 @@ class BookingCarController extends Controller
                     'destination' => $request->destination,
                     'purpose' => $request->purpose,
                     'timedepature' => $request->timedepature,
+                    'timearrive' => '-',
                     'datedepature' => $request->datedepature,
                     'qty' => $request->qty,
                     'status' => $request->status
                 ]
             );
+
+            if ($request->status == '1') {
+                $url = 'https://fcm.googleapis.com/fcm/send';
+                $FcmToken = User::select('device_token')->where('id', $request->driver)->whereNotNull('device_token')->pluck('device_token')->all();
+                $serverKey = 'AAAAtqnqJAg:APA91bHRqs3sHpLmya-pqxpLP53MxrCACfIPrl_eyuSRPyBh8LsSw1ubwEvaRvCqZMTjpP-Quy60mU7N3yCRm2f4p4Vc7y8cr5RZwu8WJKW82U2d5jWEZKJaNpj4QjIBjcEWHnv2SaW0';
+
+                $data = [
+                    "registration_ids" => $FcmToken,
+                    "notification" => [
+                        "title" => 'BOOKING SYSTEM - Drive Me',
+                        "body" => 'Ada tugas baru untuk Anda, segera cek aplikasi!',
+                        "sound" => true
+                    ]
+                ];
+
+                $encodedData = json_encode($data);
+
+                $headers = [
+                    'Authorization:key=' . $serverKey,
+                    'Content-Type: application/json',
+                ];
+
+                $ch = curl_init();
+
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+                // Disabling SSL Certificate support temporarly
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
+                // Execute post
+                $result = curl_exec($ch);
+                if ($result === FALSE) {
+                    die('Curl failed: ' . curl_error($ch));
+                }
+                // Close connection
+                curl_close($ch);
+                // return response()->json(['success'=>'Data telah berhasil ditambah']);
+            }
         }
 
         return response()->json(['success' => 'Data telah berhasil disimpan']);
